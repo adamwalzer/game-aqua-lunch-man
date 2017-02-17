@@ -1,0 +1,11 @@
+@import 'mixins';
+
+#title {
+    img {
+        width: 100%;
+    }
+
+    button.next-screen {
+        @include nav-button(1);
+    }
+}

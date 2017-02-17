@@ -1,0 +1,22 @@
+@import 'variables';
+
+@font-face {
+    font-family: 'Kalam-Regular';
+    src: url('#{$font}Kalam-Regular.ttf')  format('truetype'); /* Safari, Android, iOS */
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Kalam-Bold';
+    src: url('#{$font}Kalam-Bold.ttf')  format('truetype'); /* Safari, Android, iOS */
+    font-style: normal;
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Kalam-Light';
+    src: url('#{$font}Kalam-Light.ttf')  format('truetype'); /* Safari, Android, iOS */
+    font-style: normal;
+    font-weight: 200;
+}

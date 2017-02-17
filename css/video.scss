@@ -1,0 +1,10 @@
+@import 'mixins';
+
+#video {
+    .video {
+        @include background($image + 'videoframe.png');
+        @include center;
+        height: 80%;
+        width: 80%;
+    }
+}

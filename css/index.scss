@@ -1,0 +1,84 @@
+@import 'mixins';
+@import 'fonts';
+
+@include reset;
+@include bootstrap-game;
+
+body {
+    line-height: 1.2;
+    color: $text-color;
+    font-family: GROBOLD, "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.skoash-game {
+    > .menu {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+    }
+}
+
+button {
+    &.close {
+        @include nav-button(3, 53px, 53px, 0.4);
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+
+    &.next-screen,
+    &.prev-screen,
+    &.close-reveal {
+        display: block;
+        position: absolute;
+        bottom: 10px;
+        z-index: 10;
+        margin: 0;
+        width: 140px;
+        height: 55px;
+    }
+
+    &.close-reveal,
+    &.next-screen {
+        @include nav-button(5, 75px, 75px);
+        right: 15px;
+    }
+
+    &.prev-screen {
+        @include nav-button(4, 75px, 75px);
+        left: 15px;
+    }
+
+    &.quit-yes,
+    &.quit-no {
+        bottom: 10%;
+        width: 220px;
+        height: 110px;
+    }
+
+    &.quit-yes {
+        @include yesno-button(1);
+        left: 17%;
+    }
+
+    &.quit-no {
+        @include yesno-button(2);
+        right: 17%;
+    }
+}
+
+.skoash-game {
+    $screen-pairs:
+        (video bkg4)
+        (video bkg4);
+    @include screen-background-pairs($screen-pairs);
+
+    .background {
+        $background-pairs:
+            (bkg4 'BKG.4.jpg')
+            (bkg4 'BKG.4.jpg');
+        @include background-pairs($background-pairs);
+    }
+}
+

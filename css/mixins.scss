@@ -1,0 +1,17 @@
+@import 'variables';
+@import '../../shared/css/mixins/import';
+
+@mixin nav-button($column, $width: 0, $height: 0, $scale: 0.6) {
+    $img-width: 2100px * $scale;
+    $img-height: 600px * $scale;
+    @include sprite($sprite + 'main.nav.png', $img-width, $img-height, 7, 2, $column, 1, 2, $width, $height);
+}
+
+@mixin yesno-button($column, $width: 0, $height: 0, $scale: 1) {
+    $img-width: 960px * $scale;
+    $img-height: 960px * $scale;
+    $width: $width * $scale;
+    $height: $height * $scale;
+    @include sprite($sprite + 'quit.sprite.png', $img-width, $img-height, 2, 2, $column, 1, 2, $width, $height);
+}
+
