@@ -1,0 +1,46 @@
+@import 'mixins';
+
+.screen[id*="info"] {
+    .sprite {
+        position: absolute;
+        left: -140px;
+        bottom: 30px;
+        width: 900px;
+    }
+
+    .circle {
+        width: 510px;
+        margin-top: 15px;
+    }
+
+    .text {
+        @include center;
+        width: 420px;
+        height: 360px;
+        font-size: 33px;
+
+        div {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    &.OPEN {
+        .text {
+            animation-name: slideInLeft;
+            animation-delay: 2s;
+        }
+
+        .circle {
+            animation-name: rotateIn;
+        }
+    }
+}
+
+#info-daily-meals {
+    .text {
+        font-size: 45px;
+    }
+}
+

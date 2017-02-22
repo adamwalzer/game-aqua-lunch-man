@@ -1,5 +1,6 @@
 @import 'variables';
 @import '../../shared/css/mixins/import';
+@import '../../shared/css/animate';
 
 @mixin nav-button($column, $width: 0, $height: 0, $scale: 0.6) {
     $img-width: 2100px * $scale;
@@ -13,5 +14,12 @@
     $width: $width * $scale;
     $height: $height * $scale;
     @include sprite($sprite + 'quit.sprite.png', $img-width, $img-height, 2, 2, $column, 1, 2, $width, $height);
+}
+
+@mixin frame($image-src) {
+    @include background($image + $image-src);
+    @include center;
+    width: 80%;
+    height: 80%;
 }
 

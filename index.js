@@ -7,6 +7,7 @@ import QuitScreen from 'shared/components/quit_screen/0.1';
 
 import TitleScreen from './components/title_screen';
 import VideoScreen from './components/video_screen';
+import InfoScreenComponent from './components/info_screen_component';
 
 skoash.start(
     <skoash.Game
@@ -16,6 +17,9 @@ skoash.start(
             iOSScreen,
 			TitleScreen,
 			VideoScreen,
+			InfoScreenComponent(0),
+			InfoScreenComponent(1),
+			InfoScreenComponent(2),
         ]}
         menus={{
             quit: QuitScreen,
@@ -37,6 +41,7 @@ skoash.start(
             <skoash.Audio type="sfx" ref="screen-complete" src={`${MEDIA.EFFECT}ArrowAppear.mp3`} />,
             <skoash.Audio ref="BKG1" type="background" src={`${CMWN.MEDIA.EFFECT}BKG_G1.mp3`} loop />,
             <skoash.Audio ref="BKG2" type="background" src={`${CMWN.MEDIA.EFFECT}BKG_G2.mp3`} loop />,
+            <div className="background bkg1" />,
             <div className="background bkg4" />,
         ]}
     />

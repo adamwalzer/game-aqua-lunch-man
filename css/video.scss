@@ -2,9 +2,6 @@
 
 #video {
     .video {
-        @include background($image + 'videoframe.png');
-        @include center;
-        height: 80%;
-        width: 80%;
+        @include frame('videoframe.png');
     }
 }
