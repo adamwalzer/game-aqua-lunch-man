@@ -8,6 +8,9 @@ import QuitScreen from 'shared/components/quit_screen/0.1';
 import TitleScreen from './components/title_screen';
 import VideoScreen from './components/video_screen';
 import InfoScreenComponent from './components/info_screen_component';
+import ScaleGameComponent from './components/scale_game_component';
+
+import {LEFT, RIGHT} from './components/variables';
 
 skoash.start(
     <skoash.Game
@@ -16,8 +19,9 @@ skoash.start(
         screens={[
             iOSScreen,
 			TitleScreen,
-			VideoScreen,
-			InfoScreenComponent(0),
+			//VideoScreen,
+			//InfoScreenComponent(0),
+			ScaleGameComponent('watermelon', 'pizza', LEFT),
 			InfoScreenComponent(1),
 			InfoScreenComponent(2),
         ]}

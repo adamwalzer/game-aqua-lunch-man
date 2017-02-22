@@ -1,0 +1,45 @@
+@import 'variables';
+@import 'mixins';
+
+.screen[id*="scale"] {
+    .soj-title {
+        font-size: 50px;
+        margin-top:15px;
+        color: $red;
+    }
+
+    .reveal {
+        @include reveal;
+
+        .close-reveal {
+            display: none;
+        }
+    }
+
+    .screen-content > .reveal {
+        img {
+            position: absolute;
+            width: 600px;
+        }
+
+    }
+
+    .selectable {
+        @include selectable;
+        @include cover;
+
+        li {
+            //              image                    width   height columns rows column row h-row
+            @include sprite($sprite + 'sprite.g101.png', 2836px, 273px, 18,     1,   1,     1,  1);
+            position: absolute;
+            top: 200px;
+
+            &:nth-of-type(1) {
+                left: 200px;
+            }
+            &:nth-of-type(1) {
+                left: 400px;
+            }
+        }
+    }
+}

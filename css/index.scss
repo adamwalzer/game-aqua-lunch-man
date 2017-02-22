@@ -1,4 +1,5 @@
 @import 'mixins';
+@import 'variables';
 @import 'fonts';
 
 @include reset;
@@ -6,7 +7,7 @@
 
 body {
     line-height: 1.3;
-    color: $text-color;
+    color: $text-black;
     font-family: "Kalam-Bold", "Source Sans Pro", "Helvetica Neue", Helvetica, sans-serif;
 }
 
@@ -71,7 +72,8 @@ button {
 .skoash-game {
     $screen-pairs:
         (video bkg4)
-        (info bkg1);
+        (info bkg1)
+        (scale bkg1);
     @include screen-background-pairs($screen-pairs);
 
     .background {
@@ -84,8 +86,8 @@ button {
 
 .soj-title {
     // TODO: fix smoothing 2/22/17 AIM
-    @include text-stroke(4, $text-color);
+    @include text-stroke(4, $text-black);
     font-family: soupofjustice;
     font-size: 80px;
-    color: $title-color;
+    color: $blue
 }
