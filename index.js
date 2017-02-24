@@ -10,6 +10,7 @@ import VideoScreen from './components/video_screen';
 import InfoScreenComponent from './components/info_screen_component';
 import ScaleGameComponent from './components/scale_game_component';
 import InfoAnswerComponent from './components/info_answer_component';
+import InstructionsScreen from './components/instructions_screen';
 
 import {LEFT, RIGHT} from './components/variables';
 
@@ -42,6 +43,7 @@ skoash.start(
 			//InfoAnswerComponent('tofu'),
 			//InfoScreenComponent(1),
 			//InfoScreenComponent(2),
+			InstructionsScreen,
         ]}
         menus={{
             quit: QuitScreen,
@@ -65,6 +67,7 @@ skoash.start(
             <skoash.Audio ref="bkg2" type="background" src={`${CMWN.MEDIA.EFFECT}bkg-g2.mp3`} loop />,
             <div className="background bkg1" />,
             <div className="background bkg2" />,
+            <div className="background bkg3" />,
             <div className="background bkg4" />,
         ]}
     />

@@ -74,14 +74,16 @@ button {
         (video bkg4)
         (info bkg1)
         (scale bkg1)
-        (answer bkg2);
+        (answer bkg2)
+        (instructions bkg3);
     @include screen-background-pairs($screen-pairs);
 
     .background {
         $background-pairs:
-            (bkg4 'bkg4.jpg')
+            (bkg1 'bkg1.jpg')
             (bkg2 'bkg2.jpg')
-            (bkg1 'bkg1.jpg');
+            (bkg1 'bkg3.jpg')
+            (bkg4 'bkg4.jpg');
         @include background-pairs($background-pairs);
     }
 }

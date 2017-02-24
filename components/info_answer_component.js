@@ -2,7 +2,6 @@ import { INFO_ANSWER } from './variables';
 
 export default function (id) {
 
-
     return function (props, ref, key) {
         return (
             <skoash.Screen
