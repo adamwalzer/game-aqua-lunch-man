@@ -1,13 +1,21 @@
 @import 'mixins';
 
-.screen[id*="info"] {
+.screen[id*="answer"] {
     @include circle-text;
 
+    .soj-title {
+        font-size: 71px;
+    }
+
+    .text {
+        font-size: 27px;
+    }
+
     .sprite {
+        @include block(220px, 160px, orange);
         position: absolute;
-        left: -140px;
+        right: 130px;
         bottom: 30px;
-        width: 440px;
     }
 
     &.OPEN {
@@ -19,12 +27,6 @@
         .circle {
             animation-name: rotateIn;
         }
-    }
-}
-
-#info-daily-meals {
-    .text {
-        font-size: 45px;
     }
 }
 

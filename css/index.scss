@@ -22,7 +22,7 @@ body {
 
 button {
     &.close {
-        @include nav-button(3, 53px, 53px, 0.4);
+        @include block(53px, 53px, red);
         position: absolute;
         top: 5px;
         right: 5px;
@@ -42,12 +42,12 @@ button {
 
     &.close-reveal,
     &.next-screen {
-        @include nav-button(5, 75px, 75px);
+        @include block(75px, 75px, red);
         right: 15px;
     }
 
     &.prev-screen {
-        @include nav-button(4, 75px, 75px);
+        @include block(75px, 75px, red);
         left: 15px;
     }
 
@@ -73,13 +73,15 @@ button {
     $screen-pairs:
         (video bkg4)
         (info bkg1)
-        (scale bkg1);
+        (scale bkg1)
+        (answer bkg2);
     @include screen-background-pairs($screen-pairs);
 
     .background {
         $background-pairs:
-            (bkg4 'BKG.4.jpg')
-            (bkg1 'BKG.1.jpg');
+            (bkg4 'bkg4.jpg')
+            (bkg2 'bkg2.jpg')
+            (bkg1 'bkg1.jpg');
         @include background-pairs($background-pairs);
     }
 }
@@ -89,5 +91,6 @@ button {
     @include text-stroke(4, $text-black);
     font-family: soupofjustice;
     font-size: 80px;
+    line-height: 0.9;
     color: $blue
 }

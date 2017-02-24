@@ -1,6 +1,7 @@
-import { INFO_SCREEN } from './variables';
+import { INFO_ANSWER } from './variables';
 
-export default function (index) {
+export default function (id) {
+
 
     return function (props, ref, key) {
         return (
@@ -8,24 +9,21 @@ export default function (index) {
                 {...props}
                 ref={ref}
                 key={key}
-                id={`info-${INFO_SCREEN[index].vo}`}
+                id={`answer-${id}`}
                 backgroundAudio="bkg1"
             >
                 <skoash.Audio
                     type="voiceOver"
-                    src={`${CMWN.MEDIA.VO}${INFO_SCREEN[index].vo}.mp3`}
-                />
-                <skoash.Image
-                    className="sprite"
-                    src={`${CMWN.MEDIA.IMAGE}aqualunchman.png`}
+                    src={`${CMWN.MEDIA.VO}${id}.mp3`}
                 />
                 <skoash.Image
                     className="circle"
                     src={`${CMWN.MEDIA.IMAGE}circleframe.png`}
                 />
                 <skoash.Component className="text">
-                    {INFO_SCREEN[index].text}
+                    {INFO_ANSWER[id]}
                 </skoash.Component>
+                <div className="sprite" />
             </skoash.Screen>
         );
     }

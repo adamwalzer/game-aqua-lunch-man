@@ -3,14 +3,22 @@ import { LEFT, RIGHT } from './variables';
 export default function (foodleft, foodright, correct = LEFT) {
     return function (props, ref, key) {
         let openMedia = function () {
-            let choice = _.get(props, 'data.selectable.target', null);
+            let choice = _.get(props, 'data.selectable.target.props.data-ref', null);
             if (!choice) return;
     
             return choice === correct ? 'scale right' : 'scale wrong';
         };
-    
+
         let openIcon = function (side) {
-            return _.get(props, 'data.selectable.target', null) === side ? "icon" : null;
+            let result = _.get(props, 'data.selectable.target.props.data-ref', null) === side ?
+                "icon" : null;
+            return result;
+        };
+
+        let changeScale = function () {
+            let result =  _.get(props, 'data.selectable.target.props.data-ref', null) !== null ?
+                correct : null
+            return result;
         };
 
         return (
@@ -23,59 +31,80 @@ export default function (foodleft, foodright, correct = LEFT) {
             >
                 <skoash.Audio
                     type="voiceOver"
-                    src={`${CMWN.MEDIA.VO}${`${_.capitalize(foodleft)}${_.capitalize(foodright)}`}.mp3`}
+                    src={`${CMWN.MEDIA.VO}${`${foodleft}${foodright}`}.mp3`}
                 />
                 <skoash.MediaCollection
-                    open={openMedia()}
+                    play={openMedia()}
                 >
                     <skoash.Audio
                         type="sfx"
                         ref="right"
-                        src={`${CMWN.MEDIA.EFFECT}Right_G1.mp3`}
+                        src={`${CMWN.MEDIA.EFFECT}right-g1.mp3`}
+                        complete
                     />
                     <skoash.Audio
                         type="sfx"
                         ref="wrong"
-                        src={`${CMWN.MEDIA.EFFECT}Wrong_G1.mp3`}
+                        src={`${CMWN.MEDIA.EFFECT}wrong-g1.mp3`}
+                        complete
                     />
                     <skoash.Audio
                         type="sfx"
                         ref="scale"
-                        src={`${CMWN.MEDIA.EFFECT}Scale.mp3`}
+                        src={`${CMWN.MEDIA.EFFECT}scale.mp3`}
                     />
                 </skoash.MediaCollection>
                 <div className="soj-title">WHICH TAKES LESS WATER TO PRODUCE?</div>
                 <skoash.Reveal
-                    openReveal={_.get(props, 'data.selectable.target', null) !== null ? correct : null}
+                    openReveal={changeScale()}
+                    closeReveal={changeScale()}
                     openOnStart="balance"
+                    complete
+                    checkComplete={false}
                     list={[
-                        <skoash.Image
+                        <skoash.ListItem
                             ref="balance"
-                            src={`${CMWN.MEDIA.IMAGE}balanceSCALE.png`}
                         />,
-                        <skoash.Image
+                        <skoash.ListItem
+                            ref={RIGHT}
+                        />,
+                        <skoash.ListItem
                             ref={LEFT}
-                            src={`${CMWN.MEDIA.IMAGE}leftSCALE.png`}
                         />,
                     ]}
                 />
                 <skoash.Selectable
                     ref="selectable"
                     dataTarget="selectable"
+                    chooseOne
                     list={[
-                        <skoash.Component className={foodleft}>
+                        <skoash.Component
+                            data-ref={LEFT}
+                            className={(correct === LEFT ? 'correct ' : 'incorrect ') + foodright}
+                        >
                             <skoash.Reveal
-                                open={openIcon(LEFT)}
+                                openReveal={openIcon(LEFT)}
+                                complete
+                                checkComplete={false}
                                 list={[
-                                    <skoash.Component ref="icon"/>
+                                    <skoash.ListItem
+                                        ref="icon"
+                                    />
                                 ]}
                             />
                         </skoash.Component>,
-                        <skoash.Component className={foodright}>
+                        <skoash.Component
+                            data-ref={RIGHT}
+                            className={(correct === RIGHT ? 'correct ' : 'incorrect ') + foodright}
+                        >
                             <skoash.Reveal
-                                open={openIcon(RIGHT)}
+                                openReveal={openIcon(RIGHT)}
+                                complete
+                                checkComplete={false}
                                 list={[
-                                    <skoash.Component ref="icon"/>
+                                    <skoash.ListItem
+                                        ref="icon"
+                                    />
                                 ]}
                             />
                         </skoash.Component>,

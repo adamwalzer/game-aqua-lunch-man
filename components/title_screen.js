@@ -7,11 +7,11 @@ export default function (props, ref, key) {
             id="title"
             completeOnStart
             completeDelay={3000}
-            backgroundAudio="BKG1"
+            backgroundAudio="bkg1"
         >
             <skoash.Image
                 className="sprite"
-                src={`${CMWN.MEDIA.SPRITE}AquaLunchMan.gif`}
+                src={`${CMWN.MEDIA.SPRITE}alm-title.gif`}
             />
         </skoash.Screen>
     );

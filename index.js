@@ -9,6 +9,7 @@ import TitleScreen from './components/title_screen';
 import VideoScreen from './components/video_screen';
 import InfoScreenComponent from './components/info_screen_component';
 import ScaleGameComponent from './components/scale_game_component';
+import InfoAnswerComponent from './components/info_answer_component';
 
 import {LEFT, RIGHT} from './components/variables';
 
@@ -21,31 +22,49 @@ skoash.start(
 			TitleScreen,
 			//VideoScreen,
 			//InfoScreenComponent(0),
-			ScaleGameComponent('watermelon', 'pizza', LEFT),
-			InfoScreenComponent(1),
-			InfoScreenComponent(2),
+			//ScaleGameComponent('watermelon', 'pizza', LEFT),
+			//InfoAnswerComponent('watermelon'),
+			//ScaleGameComponent('chicken', 'steak', LEFT),
+			//InfoAnswerComponent('chicken'),
+			//ScaleGameComponent('broccoli', 'cheese', LEFT),
+			//InfoAnswerComponent('broccoli'),
+			//ScaleGameComponent('wheat', 'pasta', LEFT),
+			//InfoAnswerComponent('wheatbread'),
+			//ScaleGameComponent('soda', 'applejuice', RIGHT),
+			//InfoAnswerComponent('applejuice'),
+			//ScaleGameComponent('hamburger', 'eggs', RIGHT),
+			//InfoAnswerComponent('eggs'),
+			//ScaleGameComponent('lamb', 'avocado', RIGHT),
+			//InfoAnswerComponent('avocado'),
+			//ScaleGameComponent('banana', 'chocolate', LEFT),
+			//InfoAnswerComponent('banana'),
+			//ScaleGameComponent('tofu', 'pork', LEFT),
+			//InfoAnswerComponent('tofu'),
+			//InfoScreenComponent(1),
+			//InfoScreenComponent(2),
         ]}
         menus={{
             quit: QuitScreen,
         }}
         assets={[
-            <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}BKG.1.jpg`} />,
-            <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}BKG.2.jpg`} />,
-            <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}BKG.3.jpg`} />,
-            <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}BKG.4.jpg`} />,
-            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}main.nav.png`} />,
-            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}plate.sprite.png`} />,
-            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}sprite.scale.png`} />,
-            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}sprites.waterdrop.png`} />,
-            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}sprite2.plates_01.png`} />,
-            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}sprite1.big.png`} />,
-            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}sprite.g101.png`} />,
-            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}sprite.g102.png`} />,
-            <skoash.Audio type="sfx" ref="button" src={`${CMWN.MEDIA.EFFECT}Click.mp3`} />,
-            <skoash.Audio type="sfx" ref="screen-complete" src={`${MEDIA.EFFECT}ArrowAppear.mp3`} />,
-            <skoash.Audio ref="BKG1" type="background" src={`${CMWN.MEDIA.EFFECT}BKG_G1.mp3`} loop />,
-            <skoash.Audio ref="BKG2" type="background" src={`${CMWN.MEDIA.EFFECT}BKG_G2.mp3`} loop />,
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}bkg1.jpg`} />,
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}bkg2.jpg`} />,
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}bkg3.jpg`} />,
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}bkg4.jpg`} />,
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}main-nav.png`} />,
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}plate-sprite.png`} />,
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}sprite-scale.png`} />,
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}sprites-waterdrop.png`} />,
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}sprite2-plates01.png`} />,
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}sprite-g101.png`} />,
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}sprite-g102.png`} />,
+            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}quit-sprite.png`} />,
+            <skoash.Audio type="sfx" ref="button" src={`${CMWN.MEDIA.EFFECT}click.mp3`} />,
+            <skoash.Audio type="sfx" ref="screen-complete" src={`${MEDIA.EFFECT}arrowappear.mp3`} />,
+            <skoash.Audio ref="bkg1" type="background" src={`${CMWN.MEDIA.EFFECT}bkg-g1.mp3`} loop />,
+            <skoash.Audio ref="bkg2" type="background" src={`${CMWN.MEDIA.EFFECT}bkg-g2.mp3`} loop />,
             <div className="background bkg1" />,
+            <div className="background bkg2" />,
             <div className="background bkg4" />,
         ]}
     />

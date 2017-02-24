@@ -6,6 +6,6 @@
     }
 
     button.next-screen {
-        @include nav-button(1);
+        @include block(100px, 100px, blue);
     }
 }

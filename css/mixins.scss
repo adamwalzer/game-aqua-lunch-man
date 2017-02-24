@@ -2,18 +2,24 @@
 @import '../../shared/css/mixins/import';
 @import '../../shared/css/animate';
 
-@mixin nav-button($column, $width: 0, $height: 0, $scale: 0.6) {
-    $img-width: 2100px * $scale;
-    $img-height: 600px * $scale;
-    @include sprite($sprite + 'main.nav.png', $img-width, $img-height, 7, 2, $column, 1, 2, $width, $height);
-}
-
 @mixin yesno-button($column, $width: 0, $height: 0, $scale: 1) {
     $img-width: 960px * $scale;
     $img-height: 960px * $scale;
     $width: $width * $scale;
     $height: $height * $scale;
-    @include sprite($sprite + 'quit.sprite.png', $img-width, $img-height, 2, 2, $column, 1, 2, $width, $height);
+    @include sprite($sprite + 'quit-sprite.png', $img-width, $img-height, 2, 2, $column, 1, 2, $width, $height);
+}
+
+@mixin scale($row, $scale) {
+    $img-width: 1200px * $scale;
+    $img-height: 2574px * $scale;
+    @include sprite($sprite + 'sprite-scale.png', $img-width, $img-height, 1, 3, 1, $row, 1); 
+}
+
+@mixin block($width, $height, $color) {
+    width: $width;
+    height: $height;
+    background-color: $color;
 }
 
 @mixin frame($image-src) {
@@ -23,3 +29,22 @@
     height: 80%;
 }
 
+@mixin circle-text() {
+    .circle {
+        width: 510px;
+        margin-top: 15px;
+    }
+
+    .text {
+        @include center;
+        width: 420px;
+        height: 360px;
+        font-size: 33px;
+
+        div {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+}
