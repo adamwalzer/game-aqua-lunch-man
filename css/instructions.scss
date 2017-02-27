@@ -1,0 +1,63 @@
+@import 'variables';
+@import 'mixins';
+
+#instructions {
+    .sprite {
+        position: absolute;
+        width: 410px;
+        left: -200px;
+        bottom: 20px;
+        z-index: 2;
+    }
+
+    .frame {
+        @include frame(none, $blue-trans);
+        @include text-stroke(8, $yellow);
+        border: $black 8px solid;
+    }
+
+    .soj-title {
+        color: $white;
+    }
+
+    .reveal {
+        li {
+            width: 100%;
+        }
+
+        li.OPEN {
+            .soj-title {
+                animation-name: slideInDown;
+            } 
+            .text {
+                animation-name: slideInRight;
+            }
+        }
+
+        &.open-2 {
+            .close-reveal {
+                display: none;
+            }
+        }
+    }
+
+    .text {
+        font-family: Kalam;
+        font-size: 35px;
+        color: $red;
+        margin: 15px auto;
+    }
+
+    .close-reveal {
+        @include text-stroke(4, $black);
+        font-family: soupofjustice;
+        font-size: 50px;
+        color: $yellow;
+        width: 175px;
+        right: 50%;
+        bottom: 30px;
+        transform: translateX(50%);
+    }
+
+}
+

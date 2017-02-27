@@ -22,11 +22,16 @@
     background-color: $color;
 }
 
-@mixin frame($image-src) {
-    @include background($image + $image-src);
+@mixin frame($image-src: none, $color: initial) {
+    @if $image-src != none {
+        @include background($image + $image-src);
+    } @else {
+        background-color: $color;
+    }
     @include center;
     width: 80%;
     height: 80%;
+    padding: 30px;
 }
 
 @mixin circle-text() {

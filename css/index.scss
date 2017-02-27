@@ -82,7 +82,7 @@ button {
         $background-pairs:
             (bkg1 'bkg1.jpg')
             (bkg2 'bkg2.jpg')
-            (bkg1 'bkg3.jpg')
+            (bkg3 'bkg3.jpg')
             (bkg4 'bkg4.jpg');
         @include background-pairs($background-pairs);
     }
@@ -94,5 +94,13 @@ button {
     font-family: soupofjustice;
     font-size: 80px;
     line-height: 0.9;
-    color: $blue
+    color: $blue;
+}
+
+.reveal {
+    @include reveal;
+}
+
+.selectable {
+    @include selectable;
 }
