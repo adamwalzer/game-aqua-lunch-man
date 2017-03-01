@@ -26,20 +26,16 @@ const INSTRUCTIONS = [
 ];
 
 export default function (props, ref, key) {
-    console.log(_.get(props, 'data.reveal.play', null));
-    let closeSound = function (play = 'close') {
-        let callback = null;
-        if (play === 'close') callback = closeSound.bind(this, null),
+    let closeSound = function (ref) {
+        let play = 'close';
+        let callback = setTimeout(nextInstr.bind(this), 500);
 
         this.updateScreenData({
             path: 'reveal',
             data: {
                 play,
             },
-            callback,
         });
-
-        nextInstr.call(this);
     };
 
     let nextInstr = function () {
@@ -48,6 +44,7 @@ export default function (props, ref, key) {
             path: 'reveal',
             data: {
                 index,
+                play: null,
             },
         });
     };
@@ -61,7 +58,6 @@ export default function (props, ref, key) {
             backgroundAudio="bkg1"
         >
             <skoash.MediaCollection
-                ref="reveal-media"
                 play={`children-${_.get(props, 'data.reveal.index', null)}`}
             >
                 {_.map(NUMS, (value, key) => {
@@ -74,8 +70,7 @@ export default function (props, ref, key) {
                     );
                 })}
             </skoash.MediaCollection>
-            <skoash.MediaCollection>
-                ref="media"
+            <skoash.MediaCollection
                 play={_.get(props, 'data.reveal.play', null)}
             >
                 <skoash.Audio
