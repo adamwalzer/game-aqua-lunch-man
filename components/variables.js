@@ -134,3 +134,65 @@ export const INFO_ANSWER = {
     ),
 };
 
+export const MEAL = {
+    BFAST: {
+        NAME: 'breakfast',
+        ITEM: [
+            { NAME: 'apple-juice', AMT: 34 },
+            { NAME: 'orange-juice', AMT: 33 },
+            { NAME: 'oatmeal', AMT: 73 },
+            { NAME: 'cornflakes', AMT: 34 },
+            { NAME: 'sausages', AMT: 330 },
+            { NAME: 'apple', AMT: 27 },
+            { NAME: 'eggs', AMT: 94 },
+            { NAME: 'milk', AMT: 54 },
+        ],
+    },
+    LUNCH: {
+        NAME: 'lunch',
+        ITEM: [
+
+        ],
+    },
+    DINNER: {
+        NAME: 'dinner',
+        ITEM: [
+
+        ],
+    },
+};
+
+export const MEAL_REVEAL = {
+    INSTRUCTIONS: (
+        <div>
+            <div className="soj-title">INSTRUCTIONS</div>
+            Drag and drop the food items into the plate<br />
+            on the center. Fill each section of it and<br />
+            stay under the water usage total. Keep track<br />
+            of it using the drop meter on the right.
+        </div>
+    ),
+    BFAST: (
+        <div>
+            Excellent meal-planning!
+            <div className="soj-title">Now let's move on to LUNCH</div>
+        </div>
+    ),
+    LUNCH: (
+        <div>
+            Amazing water conservation<br />
+            skills! You've designed a great<br />
+            lunch and helped the <br />
+            environment. Next step:
+            <div className="soj-title">DINNER!</div>
+        </div>
+    ),
+    DINNER: (
+        <div>
+            You've instructed a fantastic dinner!<br />
+            Thank you for saving water <br />
+            when you eat!
+        </div>
+    ),
+};
+

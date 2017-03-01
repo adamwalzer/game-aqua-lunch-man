@@ -11,8 +11,9 @@ import InfoScreenComponent from './components/info_screen_component';
 import ScaleGameComponent from './components/scale_game_component';
 import InfoAnswerComponent from './components/info_answer_component';
 import InstructionsScreen from './components/instructions_screen';
+import PlateGameComponent from './components/scale_game_component';
 
-import {LEFT, RIGHT} from './components/variables';
+import {LEFT, RIGHT, MEAL} from './components/variables';
 
 skoash.start(
     <skoash.Game
@@ -43,7 +44,8 @@ skoash.start(
 			//InfoAnswerComponent('tofu'),
 			//InfoScreenComponent(1),
 			//InfoScreenComponent(2),
-			InstructionsScreen,
+			//InstructionsScreen,
+			PlateGameComponent(MEAL.BFAST.NAME),
         ]}
         menus={{
             quit: QuitScreen,

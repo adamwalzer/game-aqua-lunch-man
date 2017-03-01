@@ -75,7 +75,8 @@ button {
         (info bkg1)
         (scale bkg1)
         (answer bkg2)
-        (instructions bkg3);
+        (instructions bkg3)
+        (plate bkg3);
     @include screen-background-pairs($screen-pairs);
 
     .background {
