@@ -59,12 +59,10 @@ button {
     }
 
     &.quit-yes {
-        @include yesno-button(1);
         left: 17%;
     }
 
     &.quit-no {
-        @include yesno-button(2);
         right: 17%;
     }
 }

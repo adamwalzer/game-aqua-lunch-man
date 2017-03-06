@@ -2,14 +2,6 @@
 @import '../../shared/css/mixins/import';
 @import '../../shared/css/animate';
 
-@mixin yesno-button($column, $width: 0, $height: 0, $scale: 1) {
-    $img-width: 960px * $scale;
-    $img-height: 960px * $scale;
-    $width: $width * $scale;
-    $height: $height * $scale;
-    @include sprite($sprite + 'quit-sprite.png', $img-width, $img-height, 2, 2, $column, 1, 2, $width, $height);
-}
-
 @mixin scale($row, $scale) {
     $img-width: 1200px * $scale;
     $img-height: 2574px * $scale;

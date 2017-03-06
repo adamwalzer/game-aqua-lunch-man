@@ -8,6 +8,7 @@ export default function (props, ref, key) {
             completeOnStart
             completeDelay={3000}
             backgroundAudio="bkg1"
+            nextButtonClassName="play"
         >
             <skoash.Image
                 className="sprite"
