@@ -4,35 +4,97 @@
 
 .screen[id*="plate"] {
 
-    > .soj-title {
+    .screen-content > .soj-title {
         color: $yellow;
         margin-top: 15px;
     }
 
+    $bfast: apple-juice orange-juice oatmeal cornflakes sausages apple eggs milk;
+
+    .food {
+        cursor: pointer;
+        z-index: 1;
+
+        &.RETURN {
+            transition: transform .5s, opacity 1s;
+        }
+
+        &.CORRECT {
+            cursor: default;
+            pointer-events: none;
+        }
+
+        @for $i from 1 through length($bfast) {
+            &.#{nth($bfast, $i)} {
+                @include block(65px, 65px, rgba($i * 25, $i * 25, $i * 25, 1));
+                margin: 7px auto;
+            }
+        }
+
+        .reveal {
+            width: 0;
+            height: 0;
+            left: initial;
+            right: 0;
+
+            .close-reveal {
+                @include block(20px, 20px, black);
+                right: initial;
+            }
+        }
+    }
+
+    .dropzones {
+        @include center;
+        top: 55%;
+        width: 425px;
+        height: 425px;
+        z-index: -1;
+    }
+
+    .block-plate,
     .plate {
         position: absolute;
         transform: scale(0.56);
 
         &.starch {
             top: 0;
-            left: 96px;
+            left: 0;
         }
 
         &.protein {
             top: 0;
-            left: 314px;
+            right: 0;
         }
 
         &.fruitveg {
-            top: 218px;
-            left: 96px;
+            @include center('false');
+            bottom: 0;
         }
 
         &.beverage {
-            top: 142px;
-            left: 237px;
+            @include center;
         }
 
+    }
+
+    .block-plate {
+        transform: none;
+        &.starch {
+            @include block(200px, 100px, yellow);
+        }
+
+        &.protein {
+            @include block(200px, 100px, red);
+        }
+
+        &.fruitveg {
+            @include block(400px, 100px, green);
+        }
+
+        &.beverage {
+            @include block(100px, 100px, blue);
+        }
     }
 
     .left-panel,
@@ -53,21 +115,13 @@
             top: 93px;
             transition: margin-top 1s;
             text-align: center;
-        } 
-
-        $bfast: apple-juice orange-juice oatmeal cornflakes sausages apple eggs milk;
-
-        @for $i from 1 through length($bfast) {
-            .food.#{nth($bfast, $i)} {
-                @include block(65px, 65px, rgba($i * 20, $i * 20, $i * 20, 1));
-                margin: 7px auto;
-            }
         }
+
 
         .prev-slide,
         .next-slide {
             @include block(75px, 50px, pink);
-            @include center('false'); 
+            @include center('false');
         }
 
         .prev-slide {
@@ -86,7 +140,7 @@
         text-shadow: 1px 1px 2px $black;
         font-family: soupofjustice;
         font-size: 26px;
-        color: $blue;
+        color: $light-blue;
 
         > div {
             @include center;
@@ -98,9 +152,16 @@
             margin: 0 auto;
 
         }
+
+        .reveal {
+            @include text-stroke(4, $white);
+            font-size: 60px;
+            color: $red;
+            line-height: 0.9;
+        }
     }
 
-    .reveal {
+    .screen-content > .reveal {
         background-color: $yellow-trans;
 
         li {
