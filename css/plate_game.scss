@@ -12,8 +12,10 @@
     $bfast: apple-juice orange-juice oatmeal cornflakes sausages apple eggs milk;
 
     .food {
+        position: absolute;
         cursor: pointer;
         z-index: 1;
+        margin: 0 auto;
 
         &.RETURN {
             transition: transform .5s, opacity 1s;
@@ -22,12 +24,12 @@
         &.CORRECT {
             cursor: default;
             pointer-events: none;
+            transition: margin-top 1s;
         }
 
         @for $i from 1 through length($bfast) {
             &.#{nth($bfast, $i)} {
                 @include block(65px, 65px, rgba($i * 25, $i * 25, $i * 25, 1));
-                margin: 7px auto;
             }
         }
 
@@ -113,6 +115,8 @@
         .content {
             @include center('false');
             top: 93px;
+            width: 65px;
+            height: 72px;
             transition: margin-top 1s;
             text-align: center;
         }
