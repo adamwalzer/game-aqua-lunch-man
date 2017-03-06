@@ -1,0 +1,136 @@
+@import 'mixins';
+@import 'variables';
+@import 'fonts';
+
+.screen[id*="plate"] {
+
+    > .soj-title {
+        color: $yellow;
+        margin-top: 15px;
+    }
+
+    .plate {
+        position: absolute;
+        transform: scale(0.56);
+
+        &.starch {
+            top: 0;
+            left: 96px;
+        }
+
+        &.protein {
+            top: 0;
+            left: 314px;
+        }
+
+        &.fruitveg {
+            top: 218px;
+            left: 96px;
+        }
+
+        &.beverage {
+            top: 142px;
+            left: 237px;
+        }
+
+    }
+
+    .left-panel,
+    .right-panel {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 200px;
+    }
+
+    .left-panel {
+        @include background($image + 'leftwood.jpg');
+        left: 0;
+        background-size: 100%;
+
+        .content {
+            @include center('false');
+            top: 93px;
+            transition: margin-top 1s;
+            text-align: center;
+        } 
+
+        $bfast: apple-juice orange-juice oatmeal cornflakes sausages apple eggs milk;
+
+        @for $i from 1 through length($bfast) {
+            .food.#{nth($bfast, $i)} {
+                @include block(65px, 65px, rgba($i * 20, $i * 20, $i * 20, 1));
+                margin: 7px auto;
+            }
+        }
+
+        .prev-slide,
+        .next-slide {
+            @include block(75px, 50px, pink);
+            @include center('false'); 
+        }
+
+        .prev-slide {
+            top: 37px;
+        }
+
+        .next-slide {
+            bottom: 95px;
+        }
+
+    }
+
+    .right-panel {
+        right: 0;
+        background-color: $yellow;
+        text-shadow: 1px 1px 2px $black;
+        font-family: soupofjustice;
+        font-size: 26px;
+        color: $blue;
+
+        > div {
+            @include center;
+            width: 100%;
+        }
+
+        .waterdrop {
+            @include block(100px, 230px, blue);
+            margin: 0 auto;
+
+        }
+    }
+
+    .reveal {
+        background-color: $yellow-trans;
+
+        li {
+            width: 650px;
+            height: 350px;
+            padding: 15px;
+            background-color: $blue;
+            border: 9px solid $red;
+
+            p {
+                font-size: 27px;
+            }
+        }
+
+        .close-reveal {
+            top: 60px;
+            right: 125px;
+        }
+
+        .soj-title {
+            color: $white;
+        }
+
+        .instructions {
+            .soj-title {
+                font-size: 70px;
+                padding: 15px;
+                border-bottom: 3px dashed $black;
+                margin-bottom: 30px;
+            }
+        }
+    }
+}

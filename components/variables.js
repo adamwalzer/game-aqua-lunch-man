@@ -5,7 +5,7 @@ export const INFO_SCREEN = [
     {
         vo: 'somefoods',
         text : (
-            <div>
+            <p>
                 Some foods need<br />
                 more water than others<br />
                 to be produced.<br /><br />
@@ -13,29 +13,29 @@ export const INFO_SCREEN = [
                 click on what food item<br />
                 you think users <br />
                 the least water.
-            </div>
+            </p>
         ),
     },
     {
         vo: 'greatjob',
         text : (
-            <div>
+            <p>
                 <span className="soj-title">GREAT JOB!</span><br />
                 You have the power to<br />
                 help save water<br />
                 by making smart food choices!
-            </div>
+            </p>
         ),
     },
     {
         vo: 'dailymeals',
         text : (
-            <div>
+            <p>
                 Now let's see<br />
                 how much water<br />
                 is used for your<br />
                 daily meals.
-            </div>
+            </p>
         ),
     },
 ];
@@ -135,64 +135,205 @@ export const INFO_ANSWER = {
 };
 
 export const MEAL = {
-    BFAST: {
-        NAME: 'breakfast',
-        ITEM: [
-            { NAME: 'apple-juice', AMT: 34 },
-            { NAME: 'orange-juice', AMT: 33 },
-            { NAME: 'oatmeal', AMT: 73 },
-            { NAME: 'cornflakes', AMT: 34 },
-            { NAME: 'sausages', AMT: 330 },
-            { NAME: 'apple', AMT: 27 },
-            { NAME: 'eggs', AMT: 94 },
-            { NAME: 'milk', AMT: 54 },
-        ],
-    },
-    LUNCH: {
-        NAME: 'lunch',
-        ITEM: [
+    BFAST: 'breakfast',
+    LUNCH: 'lunch',
+    DINNER: 'dinner',
+    INSTRUCTIONS: 'instructions',
+};
 
-        ],
-    },
-    DINNER: {
-        NAME: 'dinner',
-        ITEM: [
+export const FOOD_TYPE = {
+    STARCH: 'starch',
+    PROTEIN: 'protein',
+    FRUITVEG: 'fruitveg',
+    BEV: 'beverage',
+};
 
-        ],
+const FOOD = {
+    APPLE_J: {
+        NAME: 'apple-juice',
+        AMT: 34,
+        TYPE: FOOD_TYPE.BEV,
+    },
+    ORANGE_J: {
+        NAME: 'orange-juice',
+        AMT: 33,
+        TYPE: FOOD_TYPE.BEV,
+    },
+    OATMEAL: {
+        NAME: 'oatmeal',
+        AMT: 73,
+        TYPE: FOOD_TYPE.STARCH,
+    },
+    CORNFLAKES: {
+        NAME: 'cornflakes',
+        AMT: 34,
+        TYPE: FOOD_TYPE.STARCH,
+    },
+    SAUSAGES: {
+        NAME: 'sausages',
+        AMT: 330,
+        TYPE: FOOD_TYPE.PROTEIN,
+    },
+    APPLE: {
+        NAME: 'apple',
+        AMT: FOOD_TYPE.FRUITVEG,
+        TYPE: FOOD_TYPE.BEV,
+    },
+    EGGS: {
+        NAME: 'eggs',
+        AMT: 94,
+        TYPE: FOOD_TYPE.PROTEIN,
+    },
+    MILK: {
+        NAME: 'milk',
+        AMT: 54,
+        TYPE: FOOD_TYPE.BEV,
+    },
+    PIZZA: {
+        NAME: 'pizza',
+        AMT: 321,
+        TYPE: FOOD_TYPE.STARCH,
+    },
+    RICE: {
+        NAME: 'rice',
+        AMT: FOOD_TYPE.STARCH,
+        TYPE: FOOD_TYPE.BEV,
+    },
+    PEAS: {
+        NAME: 'peas',
+        AMT: FOOD_TYPE.FRUITVEG,
+        TYPE: FOOD_TYPE.BEV,
+    },
+    FRIES: {
+        NAME: 'fries',
+        AMT: 15,
+        TYPE: FOOD_TYPE.STARCH,
+    },
+    GRAPE_J: {
+        NAME: 'grape juice',
+        AMT: 22,
+        TYPE: FOOD_TYPE.BEV,
+    },
+    HAMBURGER: {
+        NAME: 'hamburger',
+        AMT: 330,
+        TYPE: FOOD_TYPE.PROTEIN,
+    },
+    CHICKEN: {
+        NAME: 'chicken',
+        AMT: 94,
+        TYPE: FOOD_TYPE.PROTEIN,
+    },
+    SOY_MILK: {
+        NAME: 'soy-milk',
+        AMT: 164,
+        TYPE: FOOD_TYPE.BEV,
+    },
+    STEAK: {
+        NAME: 'steak',
+        AMT: 330,
+        TYPE: FOOD_TYPE.PROTEIN,
+    },
+    TOFU: {
+        NAME: 'tofu',
+        AMT: 244,
+        TYPE: FOOD_TYPE.PROTEIN,
+    },
+    PASTA: {
+        NAME: 'pasta',
+        AMT: 100,
+        TYPE: FOOD_TYPE.STARCH,
+    },
+    CORN: {
+        NAME: 'corn',
+        AMT: 107,
+        TYPE: FOOD_TYPE.STARCH,
+    },
+    PORK_CHOPS: {
+        NAME: 'pork-chops',
+        AMT: 330,
+        TYPE: FOOD_TYPE.PROTEIN,
+    },
+    BREAD: {
+        NAME: 'bread',
+        AMT: 20,
+        TYPE: FOOD_TYPE.STARCH,
     },
 };
 
-export const MEAL_REVEAL = {
-    INSTRUCTIONS: (
-        <div>
+export const MEAL_INFO = {
+    [MEAL.BFAST]: {
+        LIMIT: 425,
+        ITEMS: [
+            FOOD.APPLE_J,
+            FOOD.ORANGE_J,
+            FOOD.OATMEAL,
+            FOOD.CORNFLAKES,
+            FOOD.SAUSAGES,
+            FOOD.APPLE,
+            FOOD.EGGS,
+            FOOD.MILK,
+        ],
+        REVEAL: (
+            <p>
+                Excellent meal-planning!<br />
+                Now let's move on to<br />
+                <div className="soj-title">LUNCH</div>
+            </p>
+        ),
+    },
+    [MEAL.LUNCH]: {
+        LIMIT: 1000,
+        ITEMS: [
+            FOOD.PIZZA,
+            FOOD.RICE,
+            FOOD.PEAS,
+            FOOD.FRIES,
+            FOOD.GRAPE_J,
+            FOOD.HAMBERGER,
+            FOOD.CHICKEN,
+            FOOD.SOY_MILK,
+        ],
+        REVEAL: (
+            <p>
+                Amazing water conservation<br />
+                skills! You've designed a great<br />
+                lunch and helped the <br />
+                environment. Next step:
+                <div className="soj-title">DINNER!</div>
+            </p>
+        ),
+
+    },
+    [MEAL.DINNER]: {
+        LIMIT: 425,
+        ITEMS: [
+            FOOD.STEAK,
+            FOOD.APPLE_J,
+            FOOD.TOFU,
+            FOOD.PASTA,
+            FOOD.ORANGE_J,
+            FOOD.CORN,
+            FOOD.PORK_CHOPS,
+            FOOD.BREAD,
+        ],
+        REVEAL: (
+            <p>
+                You've instructed a fantastic dinner!<br />
+                Thank you for saving water <br />
+                when you eat!
+            </p>
+        ),
+
+    },
+    [MEAL.INSTRUCTIONS]: (
+        <p>
             <div className="soj-title">INSTRUCTIONS</div>
             Drag and drop the food items into the plate<br />
             on the center. Fill each section of it and<br />
             stay under the water usage total. Keep track<br />
             of it using the drop meter on the right.
-        </div>
-    ),
-    BFAST: (
-        <div>
-            Excellent meal-planning!
-            <div className="soj-title">Now let's move on to LUNCH</div>
-        </div>
-    ),
-    LUNCH: (
-        <div>
-            Amazing water conservation<br />
-            skills! You've designed a great<br />
-            lunch and helped the <br />
-            environment. Next step:
-            <div className="soj-title">DINNER!</div>
-        </div>
-    ),
-    DINNER: (
-        <div>
-            You've instructed a fantastic dinner!<br />
-            Thank you for saving water <br />
-            when you eat!
-        </div>
+        </p>
     ),
 };
 

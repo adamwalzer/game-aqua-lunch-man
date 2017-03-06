@@ -1,19 +1,20 @@
-import Dropzone from '../shared/components/dropzone/0.6';
-import Draggable from '../shared/components/draggable/0.4';
-import SelectableSubList from '../shared/components/selectable_sublist/0.1';
-import { MEAL, MEAL_REVEAL } from './variables';
+import Dropzone from '../../shared/components/dropzone/0.6';
+import Draggable from '../../shared/components/draggable/0.4';
+import { MEAL, MEAL_INFO, FOOD_TYPE } from './variables';
+
+const INSTRUCTIONS = 'instructions';
 
 export default function (meal) {
-    var revealList = [
-        <skoash.ListItem ref="next-meal">
-            {MEAL_REVEAL[meal]}
+    let revealList = [
+        <skoash.ListItem ref="next-meal" className={meal}>
+            {MEAL_INFO[meal].REVEAL}
         </skoash.ListItem>
     ];
 
-    if (meal === MEAL.BFAST.NAME) {
+    if (meal === MEAL.BFAST) {
         revealList.push(
-            <skoash.ListItem ref="instructions">
-                {MEAL_REVEAL.INSTRUCTIONS}
+            <skoash.ListItem ref={INSTRUCTIONS} className={INSTRUCTIONS}>
+                {MEAL_INFO[INSTRUCTIONS]}
             </skoash.ListItem>
         );
     }
@@ -27,8 +28,22 @@ export default function (meal) {
                 id={`plate-${meal}`}
                 backgroundAudio="bkg2"
             >
+                <skoash.SpriteCSS
+                    src={`${CMWN.MEDIA.SPRITE}plate-sprite`} 
+                    spriteClass="plate"
+                    frameSelectors={{
+                        0: `.${FOOD_TYPE.FRUITVEG}`,
+                        1: `.${FOOD_TYPE.FRUITVEG}:hover`,
+                        2: `.${FOOD_TYPE.STARCH}`,
+                        3: `.${FOOD_TYPE.STARCH}:hover`,
+                        4: `.${FOOD_TYPE.PROTEIN}`,
+                        5: `.${FOOD_TYPE.PROTEIN}:hover`,
+                        6: `.${FOOD_TYPE.BEV}`,
+                        7: `.${FOOD_TYPE.BEV}:hover`,
+                    }}
+                />
                 <skoash.MediaCollection
-                    play-{}
+                    play={null}
                 >
                     <skoash.Audio
                         type="sfx"
@@ -44,50 +59,37 @@ export default function (meal) {
                     />
                 </skoash.MediaCollection>
                 <div className="soj-title">{_.toUpper(meal)}</div>
-                <SelectableSubList
-                    list={
-                        <skoash.Repeater
-                            amount={
-                            item={<div />}
-                            props={_.map(MEAL[meal].ITEM, item => {className: item.NAME})}
-                        /> 
-                    }
-                />
+                <skoash.Slider
+                    className="left-panel"
+                    orientation="vertical"
+                    display={4}
+                >
+                    {_.map(MEAL_INFO[meal].ITEMS, (item) => <div className={`food ${item.NAME}`} />)}
+                </skoash.Slider>
                 <Dropzone
                     ref="dropzone"
-                    dropped={}
-                    dragging={}
-                    dropzones={[
-                        <skoash.Repeater
-                            amount={4}
-                            item={
-                                <skoash.Component />
-                            }
-                            props={[
-                                {className: starches},
-                                {className: proteins},
-                                {className: beverages},
-                                {className: fruitveg},
-                            ]}
-                        />
-                    ]}
+                    dropped={null}
+                    dragging={null}
+                    dropzones={_.map(FOOD_TYPE, (type) => <div className={`plate ${type}`} />)}
                 />
-                <skoash.Component>
+                <skoash.Component className="right-panel">
                     <div>
                         LIMIT:<br />
-                        {MEAL[meal].LIMIT} GALLONS
-                    </div>
-                    <div>
+                        {MEAL_INFO[meal].LIMIT} GALLONS
+                        <div className="waterdrop" />
                         CURRENT TOTAL:<br />
                         {_.get(props, 'data.gallon.amount', 0)}
+                        {' '}
                         {_.get(props, 'data.gallon.amount', 0) === 1 ? 'GALLON' : 'GALLONS'}
                     </div>
                 </skoash.Component>
                 <skoash.Reveal
-                    openOnStart={meal === MEAL.BFAST.NAME ? 'instructions'}
+                    openOnStart={meal === MEAL.BFAST ? INSTRUCTIONS : null}
                     list={revealList}
                 />
             </skoash.Screen>
         );
     }
 }
+
+
