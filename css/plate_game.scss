@@ -9,16 +9,23 @@
         margin-top: 15px;
     }
 
-    $bfast: apple-juice orange-juice oatmeal cornflakes sausages apple eggs milk;
+    .slider {
+        @include slider;
+    }
+
+    $bfast: apple-juice orange-juice oatmeal cornflakes sausages apple eggs milk banana;
 
     .food {
         position: absolute;
-        cursor: pointer;
         z-index: 1;
         margin: 0 auto;
 
-        &.RETURN {
-            transition: transform .5s, opacity 1s;
+        &.RETURN.VISIBLE {
+            transition: transform 1s, margin-top 1s;
+        }
+
+        &.RETURN.HIDDEN {
+            transition: transform 1s, margin-top 1s, opacity .5s;
         }
 
         &.CORRECT {

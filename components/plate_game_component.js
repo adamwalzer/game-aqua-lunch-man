@@ -51,15 +51,12 @@ export default function (meal) {
         let onCorrect = function (dropped, dropzoneRef) {
             let message = dropped.props.message;
             let amount = _.get(props, 'data.plate-food.amount', 0);
-            let all = _.get(props, 'data.plate-food.all', []);
             amount += foodInfo[message].AMT;
-            all.push(message);
 
             this.updateScreenData({
                 path: 'plate-food',
                 data: {
                     amount,
-                    all,
                     dropping: message,
                     returning: null,
                 },
@@ -68,15 +65,12 @@ export default function (meal) {
 
         let returnDraggable = function (message) {
             let amount = _.get(props, 'data.plate-food.amount', 0);
-            let all = _.get(props, 'data.plate-food.all', []);
             amount -= foodInfo[message].AMT;
-            _.remove(all, (val) => val === message);
 
             this.updateScreenData({
                 path: 'plate-food',
                 data: {
                     amount,
-                    all,
                     dropping: null,
                     returning: message,
                 }
@@ -126,7 +120,8 @@ export default function (meal) {
                     className="left-panel"
                     orientation="vertical"
                     display={4}
-                    freezeItem={_.get(props, 'data.plate-food.all', null)}
+                    freezeItem={_.get(props, 'data.plate-food.dropping', null)}
+                    unfreezeItem={_.get(props, 'data.plate-food.returning', null)}
                 >
                     {
                         _.map(MEAL_INFO[meal].ITEMS, (item, key) => (
@@ -159,6 +154,7 @@ export default function (meal) {
                     ref="dropzone"
                     dropped={_.get(props, 'data.draggable.dropped', null)}
                     dragging={_.get(props, 'data.draggable.dragging', null)}
+                    returning={_.get(props, 'data.draggable.returning', null)}
                     onCorrect={onCorrect}
                     acceptOne
                     dropzones={
