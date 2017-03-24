@@ -1,6 +1,75 @@
 export const LEFT = 'left';
 export const RIGHT = 'right';
 
+export const FOOD = {
+    APPLE: 'apple',
+    APPLE_J: 'applejuice',
+    AVOCADO: 'avocado',
+    BANANA: 'banana',
+    BREAD: 'wheat',
+    BROCCOLI: 'broccoli',
+    CHEESE_SANDWICH: 'cheese',
+    CHICKEN: 'chicken',
+    CHOCOLATE: 'chocolate',
+    CORNFLAKES: 'cornflakes',
+    EGGS: 'eggs',
+    FRIES: 'fries',
+    GRAPE_J: 'grapejuice',
+    HAMBURGER: 'hamburger',
+    ORANGE_J: 'orangejuice',
+    OATMEAL: 'oatmeal',
+    LAMBCHOPS: 'lambchops',
+    MILK: 'milk',
+    PASTA: 'pasta',
+    PEAS: 'peas',
+    PIZZA: 'pizza',
+    PORK: 'pork',
+    PORK_CHOPS: 'porkchops',
+    RICE: 'rice',
+    SAUSAGES: 'sausages',
+    SODA: 'soda',
+    SOY_MILK: 'soy-milk',
+    SALAD: 'salad',
+    STEAK: 'steak',
+    TOFU: 'tofu',
+    CORN: 'corn',
+    WATERMELON: 'watermelon',
+
+};
+
+export const CORRECT_FOOD = [
+    FOOD.WATERMELON,
+    FOOD.CHICKEN,
+    FOOD.BROCCOLI,
+    FOOD.BREAD,
+    FOOD.APPLE_J,
+    FOOD.EGGS,
+    FOOD.AVOCADO,
+    FOOD.BANANA,
+    FOOD.TOFU,
+];
+
+export const SCALE_FOOD = [
+    FOOD.WATERMELON,
+    FOOD.PIZZA,
+    FOOD.CHICKEN,
+    FOOD.STEAK,
+    FOOD.BROCCOLI,
+    FOOD.CHEESE_SANDWICH,
+    FOOD.BREAD,
+    FOOD.PASTA,
+    FOOD.SODA,
+    FOOD.APPLE_J,
+    FOOD.HAMBURGER,
+    FOOD.EGGS,
+    FOOD.LAMBCHOPS,
+    FOOD.AVOCADO,
+    FOOD.BANANA,
+    FOOD.CHOCOLATE,
+    FOOD.PORK,
+    FOOD.TOFU,
+];
+
 export const INFO_SCREEN = [
     {
         vo: 'somefoods',
@@ -41,7 +110,7 @@ export const INFO_SCREEN = [
 ];
 
 export const INFO_ANSWER = {
-    'watermelon': (
+    [FOOD.WATERMELON]: (
         <div>
             <div className="soj-title">WATERMELON!</div>
             An 8 ounce serving of pizza takes<br />
@@ -51,7 +120,7 @@ export const INFO_ANSWER = {
             takes 14 gallons.
         </div>
     ),
-    'chicken': (
+    [FOOD.CHICKEN]: (
         <div>
             
             <div className="soj-title">CHICKEN!</div>
@@ -62,7 +131,7 @@ export const INFO_ANSWER = {
             133 gallons.
         </div>
     ),
-    'broccoli': (
+    [FOOD.BROCCOLI]: (
         <div>
             <div className="soj-title">BROCCOLI!</div>
             An 8 ounce serving of<br />
@@ -73,7 +142,7 @@ export const INFO_ANSWER = {
             only takes 20 gallons.
         </div>
     ),
-    'wheatbread': (
+    [FOOD.BREAD]: (
         <div>
             <div className="soj-title">WHEAT BREAD!</div>
             An 8 ounce serving of pasta<br />
@@ -82,7 +151,7 @@ export const INFO_ANSWER = {
             only takes 87 gallons.
         </div>
     ),
-    'applejuice': (
+    [FOOD.APPLE_J]: (
         <div>
             <div className="soj-title">APPLE JUICE!</div>
             An 8 ounce serving of soda<br />
@@ -92,7 +161,7 @@ export const INFO_ANSWER = {
             only takes 34 gallons.
         </div>
     ),
-    'eggs': (
+    [FOOD.EGGS]: (
         <div>
             <div className="soj-title">EGGS!</div>
             An 8 ounce serving of an average<br />
@@ -102,7 +171,7 @@ export const INFO_ANSWER = {
             only takes 94 gallons.
         </div>
     ),
-    'avocado': (
+    [FOOD.AVOCADO]: (
         <div>
             <div className="soj-title">AVOCADO!</div>
             An 8 ounce serving of<br />
@@ -112,7 +181,7 @@ export const INFO_ANSWER = {
             only takes 72 gallons.
         </div>
     ),
-    'banana': (
+    [FOOD.BANANA]: (
         <div>
             <div className="soj-title">BANANA!</div>
             An 8 ounce serving of<br />
@@ -122,7 +191,7 @@ export const INFO_ANSWER = {
             takes 46 gallons.
         </div>
     ),
-    'tofu': (
+    [FOOD.TOFU]: (
         <div>
             <div className="soj-title">TOFU!</div>
             An 8 ounce serving of<br />
@@ -146,33 +215,6 @@ export const FOOD_TYPE = {
     PROTEIN: 'protein',
     FRUITVEG: 'fruitveg',
     BEV: 'beverage',
-};
-
-export const FOOD = {
-    APPLE_J: 'apple-juice',
-    ORANGE_J: 'orange-juice',
-    OATMEAL: 'oatmeal',
-    CORNFLAKES: 'cornflakes',
-    SAUSAGES: 'sausages',
-    APPLE: 'apple',
-    EGGS: 'eggs',
-    MILK: 'milk',
-    BANANA: 'banana',
-    PIZZA: 'pizza',
-    RICE: 'rice',
-    PEAS: 'peas',
-    FRIES: 'fries',
-    GRAPE_J: 'grape-juice',
-    HAMBURGER: 'hamburger',
-    CHICKEN: 'chicken',
-    SOY_MILK: 'soy-milk',
-    SALAD: 'salad',
-    STEAK: 'steak',
-    TOFU: 'tofu',
-    PASTA: 'pasta',
-    CORN: 'corn',
-    PORK_CHOPS: 'pork-chops',
-    BREAD: 'bread',
 };
 
 export const FOOD_INFO = {

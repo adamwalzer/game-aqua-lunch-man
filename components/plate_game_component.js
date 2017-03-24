@@ -1,6 +1,9 @@
+import classNames from 'classnames';
+
 import Dropzone from '../../shared/components/dropzone/0.6';
 import Draggable from '../../shared/components/draggable/0.4';
-import { MEAL, MEAL_INFO, FOOD, FOOD_TYPE, FOOD_INFO } from './variables';
+import Slider from '../../shared/components/slider/0.2';
+import { MEAL, MEAL_INFO, FOOD_TYPE, FOOD_INFO } from './variables';
 
 const INSTRUCTIONS = 'instructions';
 
@@ -27,9 +30,7 @@ const DROPZONE_ANSWERS = {
     [FOOD_TYPE.BEV]: BEV,
 };
 
-
 export default function (meal) {
-
     let revealList = [
         <skoash.ListItem ref="next-meal" className={meal}>
             {MEAL_INFO[meal].REVEAL}
@@ -85,20 +86,6 @@ export default function (meal) {
                 id={`plate-${meal}`}
                 backgroundAudio="bkg2"
             >
-                <skoash.SpriteCSS
-                    src={`${CMWN.MEDIA.SPRITE}plate-sprite`} 
-                    spriteClass="plate"
-                    frameSelectors={{
-                        0: `.${FOOD_TYPE.FRUITVEG}`,
-                        1: `.${FOOD_TYPE.FRUITVEG}:hover`,
-                        2: `.${FOOD_TYPE.STARCH}`,
-                        3: `.${FOOD_TYPE.STARCH}:hover`,
-                        4: `.${FOOD_TYPE.PROTEIN}`,
-                        5: `.${FOOD_TYPE.PROTEIN}:hover`,
-                        6: `.${FOOD_TYPE.BEV}`,
-                        7: `.${FOOD_TYPE.BEV}:hover`,
-                    }}
-                />
                 <skoash.MediaCollection
                     play={null}
                 >
@@ -116,9 +103,8 @@ export default function (meal) {
                     />
                 </skoash.MediaCollection>
                 <div className="soj-title">{_.toUpper(meal)}</div>
-                <skoash.Slider
+                <Slider
                     className="left-panel"
-                    orientation="vertical"
                     display={4}
                     freezeItem={_.get(props, 'data.plate-food.dropping', null)}
                     unfreezeItem={_.get(props, 'data.plate-food.returning', null)}
@@ -126,7 +112,7 @@ export default function (meal) {
                     {
                         _.map(MEAL_INFO[meal].ITEMS, (item, key) => (
                             <Draggable
-                                className={`food ${item}`}
+                                className={`plate-food ${item}`}
                                 ref={item}
                                 message={item}
                                 key={key}
@@ -136,6 +122,7 @@ export default function (meal) {
                                     _.get(props, 'data.plate-food.returning', null) === item
                                 }
                                 children={[
+                                    <div className="food" />,
                                     <skoash.Reveal
                                         openReveal={
                                             _.get(props, 'data.plate-food.dropping', null) === item ?
@@ -149,7 +136,7 @@ export default function (meal) {
                             />
                         ))
                     }
-                </skoash.Slider>
+                </Slider>
                 <Dropzone
                     ref="dropzone"
                     dropped={_.get(props, 'data.draggable.dropped', null)}
