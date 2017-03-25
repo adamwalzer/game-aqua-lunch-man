@@ -42,18 +42,58 @@
             width: 100%;
         }
 
-        .waterdrop {
-            @include block(100px, 230px, blue);
-            margin: 0 auto;
-
-        }
-
         .reveal {
             @include text-stroke(4, $white);
             font-size: 60px;
             color: $red;
             line-height: 0.9;
+
+            &.OPEN ~ .waterdrop .red {
+                opacity: 1;
+            }
+
+            .close-reveal {
+                display: none;
+            }
         }
+
+        .waterdrop {
+            width: 115px;
+            height: 214px;
+            margin: 0 auto;
+
+            .outline,
+            .red,
+            .blue,
+            .mask {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+            }
+
+            .outline,
+            .red,
+            .blue {
+                height: 100%;
+                transform: scale(0.43);
+
+                &::before {
+                    @include center;
+                }
+            }
+
+            .red {
+                transition: opacity 0.5s;
+                opacity: 0;
+            }
+
+            .mask {
+                background-color: $yellow;
+                transition: height 1s;
+            }
+        }
+
     }
 
     .slider {

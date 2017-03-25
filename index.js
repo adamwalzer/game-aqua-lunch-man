@@ -161,9 +161,9 @@ skoash.start(
                 src={`${CMWN.MEDIA.SPRITE}sprites-waterdrop`} 
                 spriteClass="waterdrop"
                 frameSelectors={{
-                    0: '.empty',
-                    1: '.blue',
-                    2: '.red',
+                    0: ' .outline',
+                    1: ' .blue',
+                    2: ' .red',
                 }}
             />,
         ]}

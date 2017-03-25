@@ -47,11 +47,13 @@ export default function (meal) {
 
     return function (props, ref, key) {
         console.log(props.data);
+        const AMOUNT = _.get(props, 'data.plate-food.amount', 0);
+
         let foodInfo = FOOD_INFO; // make available to functions below
 
         let onCorrect = function (dropped, dropzoneRef) {
             let message = dropped.props.message;
-            let amount = _.get(props, 'data.plate-food.amount', 0);
+            let amount = AMOUNT;
             amount += foodInfo[message].AMT;
 
             this.updateScreenData({
@@ -65,7 +67,7 @@ export default function (meal) {
         };
 
         let returnDraggable = function (message) {
-            let amount = _.get(props, 'data.plate-food.amount', 0);
+            let amount = AMOUNT;
             amount -= foodInfo[message].AMT;
 
             this.updateScreenData({
@@ -156,7 +158,7 @@ export default function (meal) {
                     dragging={_.get(props, 'data.draggable.dragging', null)}
                     returning={_.get(props, 'data.draggable.returning', null)}
                     onCorrect={onCorrect}
-                    acceptOne
+                    acceptNum={1}
                     dropzones={
                         _.map(FOOD_TYPE, (type) =>
                             <skoash.Component
@@ -170,14 +172,13 @@ export default function (meal) {
                     <div>
                         LIMIT:<br />
                         {MEAL_INFO[meal].LIMIT} GALLONS
-                        <div className="waterdrop" />
                         <skoash.Reveal
                             openReveal={
-                                _.get(props, 'data.plate-food.amount', 0) >= MEAL_INFO[meal].LIMIT ?
+                                AMOUNT >= MEAL_INFO[meal].LIMIT ?
                                     'warn' : null
                             }
                             closeReveal={
-                                _.get(props, 'data.plate-food.amount', 0) < MEAL_INFO[meal].LIMIT
+                                AMOUNT < MEAL_INFO[meal].LIMIT
                             }
                             list={[
                                 <skoash.ListItem ref="warn" >
@@ -185,10 +186,21 @@ export default function (meal) {
                                 </skoash.ListItem>
                             ]}
                         />
+                        <div className="waterdrop" >
+                            <div className="outline" />
+                            <div className="blue" />
+                            <div className="red" />
+                            <div
+                                className="mask"
+                                style={{
+                                    'height': Math.max(100 - (Math.floor(100 *
+                                        (AMOUNT / MEAL_INFO[meal].LIMIT))), 0) + '%',
+                                }}
+                            />
+                        </div>
+                        <br />
                         CURRENT TOTAL:<br />
-                        {_.get(props, 'data.plate-food.amount', 0)}
-                        {' '}
-                        {_.get(props, 'data.plate-food.amount', 0) === 1 ? 'GALLON' : 'GALLONS'}
+                        {`${AMOUNT} ${AMOUNT === 1 ? 'GALLON' : 'GALLONS'}`}
                     </div>
                 </skoash.Component>
                 <skoash.Reveal
