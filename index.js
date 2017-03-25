@@ -13,9 +13,9 @@ import InfoAnswerComponent from './components/info_answer_component';
 import InstructionsScreen from './components/instructions_screen';
 import PlateGameComponent from './components/plate_game_component';
 
-import {LEFT, RIGHT, MEAL, FOOD, SCALE_FOOD, CORRECT_FOOD, FOOD_INFO, FOOD_TYPE} from './components/variables';
+import {LEFT, RIGHT, MEAL, FOOD, SCALE_FOOD, CORRECT_FOOD, PLATE_FOOD, FOOD_TYPES} from './components/variables';
 
-const PLATE_FOOD_SELECTORS = _.reduce(_.keys(FOOD_INFO), (a, v, k) => {
+const PLATE_FOOD_SELECTORS = _.reduce(PLATE_FOOD, (a, v, k) => {
     let i = k * 4;
     a[i++] = `.${v} .food`;
     a[i++] = `.${v}:hover:not(.CORRECT) .food`;
@@ -24,7 +24,7 @@ const PLATE_FOOD_SELECTORS = _.reduce(_.keys(FOOD_INFO), (a, v, k) => {
     return a;
 }, {});
 
-const PLATE_SELECTORS = _.reduce(_.map(FOOD_TYPE, v => v), (a, v, k) => {
+const PLATE_SELECTORS = _.reduce(FOOD_TYPES, (a, v, k) => {
     let i = k * 2;
     a[i++] = `.${v}`;
     a[i] = `.${v}:hover`;
@@ -153,8 +153,8 @@ skoash.start(
             />,
             <skoash.SpriteCSS
                 src={`${CMWN.MEDIA.SPRITE}plate-sprite`} 
-                spriteClass="plate"
-                spriteGroup={1}
+                spriteClass="dropzone-plate"
+                spriteGroup={2}
                 frameSelectors={PLATE_SELECTORS}
             />,
             <skoash.SpriteCSS

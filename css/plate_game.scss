@@ -9,26 +9,94 @@
         margin-top: 15px;
     }
 
-    .slider {
-        @include slider;
+    .left-panel,
+    .right-panel,
+    .shadow-panel {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 200px;
     }
 
-    $bfast: apple-juice orange-juice oatmeal cornflakes sausages apple eggs milk banana;
+    .left-panel,
+    .right-panel {
+        z-index: 1;
+    }
 
-    .plate-food {
-        position: absolute;
-        z-index: 0;
-        margin: 0 auto;
-        width: 100%;
-        height: 100%;
+    .shadow-panel {
+        @include background($image + 'leftwood.jpg');
+        left: 0;
+        background-size: 100%;
+    }
 
-        @for $i from -1 through 4 {
-            &.position-#{$i} {
-                top: $i * 100%;
-                left: 0;
+    .right-panel {
+        right: 0;
+        background-color: $yellow;
+        text-shadow: 1px 1px 2px $black;
+        font-family: soupofjustice;
+        font-size: 26px;
+        color: $light-blue;
+
+        > div {
+            @include center;
+            width: 100%;
+        }
+
+        .waterdrop {
+            @include block(100px, 230px, blue);
+            margin: 0 auto;
+
+        }
+
+        .reveal {
+            @include text-stroke(4, $white);
+            font-size: 60px;
+            color: $red;
+            line-height: 0.9;
+        }
+    }
+
+    .slider {
+        @include slider(4, 'vertical');
+
+        .content {
+            @include center('false');
+            top: 87px;
+            width: 65px;
+            height: 72px;
+            text-align: center;
+
+            > * {
+                z-index: 0;
+                margin: 0 auto;
+                width: 100%;
+                height: 100%;
             }
         }
 
+        .prev-slide,
+        .next-slide {
+            @include block(75px, 50px, pink);
+            @include center('false');
+        }
+
+        .prev-slide {
+            top: 10px;
+        }
+
+        .next-slide {
+            bottom: 95px;
+        }
+    }
+
+    .shadow-panel {
+        .prev-slide,
+        .next-slide {
+            display: none;
+        }
+    }
+
+    .plate-food {
         &.RETURN {
             transition: transform 1s, top 1s, opacity .5s;
         }
@@ -38,9 +106,10 @@
             pointer-events: none !important;
         }
 
-        &.CORRECT .food,
         &:hover:not(.CORRECT) .food,
-        .food {
+        &.CORRECT .food,
+        .food,
+        .shadow {
             position: absolute;
             pointer-events: none;  
             transform: scale(0.4);
@@ -70,17 +139,16 @@
     }
 
     .dropzones {
-        @include center;
-        top: 55%;
-        width: 425px;
-        height: 425px;
-        z-index: -1;
+        position: absolute;
+        top: -80px;
+        left: 90px;
+        width: 781px;
+        height: 779px;
+        transform: scale(0.56);
     }
 
-    .block-plate,
-    .plate {
+    .dropzone-plate {
         position: absolute;
-        transform: scale(0.56);
 
         &.starch {
             top: 0;
@@ -98,93 +166,9 @@
         }
 
         &.beverage {
-            @include center;
+            @include center();
         }
 
-    }
-
-    .block-plate {
-        transform: none;
-        &.starch {
-            @include block(200px, 100px, yellow);
-        }
-
-        &.protein {
-            @include block(200px, 100px, red);
-        }
-
-        &.fruitveg {
-            @include block(400px, 100px, green);
-        }
-
-        &.beverage {
-            @include block(100px, 100px, blue);
-        }
-    }
-
-    .left-panel,
-    .right-panel {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 200px;
-    }
-
-    .left-panel {
-        @include background($image + 'leftwood.jpg');
-        left: 0;
-        background-size: 100%;
-
-        .content {
-            @include center('false');
-            top: 87px;
-            width: 65px;
-            height: 72px;
-            text-align: center;
-        }
-
-
-        .prev-slide,
-        .next-slide {
-            @include block(75px, 50px, pink);
-            @include center('false');
-        }
-
-        .prev-slide {
-            top: 10px;
-        }
-
-        .next-slide {
-            bottom: 95px;
-        }
-
-    }
-
-    .right-panel {
-        right: 0;
-        background-color: $yellow;
-        text-shadow: 1px 1px 2px $black;
-        font-family: soupofjustice;
-        font-size: 26px;
-        color: $light-blue;
-
-        > div {
-            @include center;
-            width: 100%;
-        }
-
-        .waterdrop {
-            @include block(100px, 230px, blue);
-            margin: 0 auto;
-
-        }
-
-        .reveal {
-            @include text-stroke(4, $white);
-            font-size: 60px;
-            color: $red;
-            line-height: 0.9;
-        }
     }
 
     .screen-content > .reveal {

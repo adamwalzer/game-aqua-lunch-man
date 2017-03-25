@@ -137,6 +137,19 @@ export default function (meal) {
                         ))
                     }
                 </Slider>
+                <Slider
+                    className="shadow-panel"
+                    display={4}
+                    adjustSlide={_.get(props, 'data.slider.firstSlide', null)}
+                >
+                    {
+                        _.map(MEAL_INFO[meal].ITEMS, (item, key) => (
+                            <div className={`plate-food ${item}`} key={key} >
+                                <div className="shadow" />
+                            </div>
+                        ))
+                    }
+                </Slider>
                 <Dropzone
                     ref="dropzone"
                     dropped={_.get(props, 'data.draggable.dropped', null)}
@@ -147,7 +160,7 @@ export default function (meal) {
                     dropzones={
                         _.map(FOOD_TYPE, (type) =>
                             <skoash.Component
-                                className={`block-plate ${type}`}
+                                className={`dropzone-plate ${type}`}
                                 data-ref={type}
                                 answers={DROPZONE_ANSWERS[type]}
                             />)

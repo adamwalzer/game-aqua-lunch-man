@@ -21,6 +21,7 @@ export const FOOD = {
     LAMBCHOPS: 'lambchops',
     MILK: 'milk',
     PASTA: 'pasta',
+    PASTA2: 'pasta2',
     PEAS: 'peas',
     PIZZA: 'pizza',
     PORK: 'pork',
@@ -211,11 +212,18 @@ export const MEAL = {
 };
 
 export const FOOD_TYPE = {
+    FRUITVEG: 'fruitveg',
     STARCH: 'starch',
     PROTEIN: 'protein',
-    FRUITVEG: 'fruitveg',
     BEV: 'beverage',
 };
+
+export const FOOD_TYPES = [
+    FOOD_TYPE.FRUITVEG,
+    FOOD_TYPE.STARCH,
+    FOOD_TYPE.PROTEIN,
+    FOOD_TYPE.BEV,
+];
 
 export const FOOD_INFO = {
     [FOOD.APPLE_J]:    { AMT: 34,  TYPE: FOOD_TYPE.BEV, },
@@ -244,6 +252,34 @@ export const FOOD_INFO = {
     [FOOD.BREAD]:      { AMT: 20,  TYPE: FOOD_TYPE.STARCH, },
 };
 
+export const PLATE_FOOD = [
+    FOOD.APPLE_J,
+    FOOD.ORANGE_J,
+    FOOD.OATMEAL,
+    FOOD.CORNFLAKES,
+    FOOD.BANANA,
+    FOOD.SAUSAGES,
+    FOOD.APPLE,
+    FOOD.EGGS,
+    FOOD.MILK,
+    FOOD.SOY_MILK,
+    FOOD.PIZZA,
+    FOOD.RICE,
+    FOOD.PEAS,
+    FOOD.FRIES,
+    FOOD.PASTA2,
+    FOOD.GRAPE_J,
+    FOOD.HAMBURGER,
+    FOOD.PORK_CHOPS,
+    FOOD.BREAD,
+    FOOD.PASTA,
+    FOOD.STEAK,
+    FOOD.CORN,
+    FOOD.TOFU,
+    FOOD.SALAD,
+    FOOD.CHICKEN,
+];
+
 export const MEAL_INFO = {
     [MEAL.BFAST]: {
         LIMIT: 425,
@@ -252,11 +288,11 @@ export const MEAL_INFO = {
             FOOD.ORANGE_J,
             FOOD.OATMEAL,
             FOOD.CORNFLAKES,
+            FOOD.BANANA,
             FOOD.SAUSAGES,
             FOOD.APPLE,
             FOOD.EGGS,
             FOOD.MILK,
-            FOOD.BANANA,
         ],
         REVEAL: (
             <div>
