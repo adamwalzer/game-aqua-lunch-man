@@ -137,7 +137,9 @@ export default function (meal) {
 
         let returnDraggable = function (message) {
             let amount = AMOUNT;
-            amount -= foodInfo[message].AMT;
+            if (message) {
+                amount = Math.max(0, amount - foodInfo[message].AMT);
+            }
 
             this.updateScreenData({
                 path: 'plate-food',
@@ -196,19 +198,21 @@ export default function (meal) {
                                 returnOnIncorrect
                                 stayOnCorrect={false}
                                 incorrect={PLATE_RETURN === item}
-                                children={[
-                                    <div className="food" />,
-                                    <skoash.Reveal
-                                        openReveal={
-                                            PLATE_DROP === item ?  item : null
-                                            // boolean check necessary
-                                            // only want close-reveal to appear on dropped item
-                                        }
-                                        list={[<skoash.ListItem ref="item" />]}
-                                        onClose={returnDraggable}
-                                    />
-                                ]}
-                            />
+                                onStart={function () { this.markIncorrect(); }}
+                            >
+                                <div className="food" />
+                                <skoash.Reveal
+                                    openReveal={
+                                        PLATE_DROP === item ?  item : null
+                                        // boolean check necessary
+                                        // only want close-reveal to appear on dropped item
+                                    }
+                                    list={[<skoash.ListItem ref="item" />]}
+                                    onClose={returnDraggable}
+                                    complete
+                                    checkComplete={false}
+                                />
+                            </Draggable>
                         ))
                     }
                 </Slider>
@@ -234,6 +238,7 @@ export default function (meal) {
                     onRemove={onRemove}
                     onComplete={onDropzoneComplete}
                     acceptNum={1}
+                    clearOnStart
                     assets={[
                         <skoash.Audio
                             type="sfx"
@@ -257,12 +262,15 @@ export default function (meal) {
                     }
                 />
                 <skoash.Component className="right-panel">
-                    <div>
-                        LIMIT:<br />
-                        {MEAL_INFO[meal].LIMIT} GALLONS
+                    <skoash.Component>
+                        <div>
+                            LIMIT:<br />
+                            {MEAL_INFO[meal].LIMIT} GALLONS
+                        </div>
                         <skoash.Reveal
                             openReveal={ AMOUNT >= MEAL_INFO[meal].LIMIT ?  'warn' : null }
                             closeReveal={ AMOUNT < MEAL_INFO[meal].LIMIT }
+                            complete
                             list={[
                                 <skoash.ListItem ref="warn" >
                                     <div>TOO MUCH WATER</div>
@@ -282,9 +290,11 @@ export default function (meal) {
                             />
                         </div>
                         <br />
-                        CURRENT TOTAL:<br />
-                        {`${AMOUNT} ${AMOUNT === 1 ? 'GALLON' : 'GALLONS'}`}
-                    </div>
+                        <div>
+                            CURRENT TOTAL:<br />
+                            {`${AMOUNT} ${AMOUNT === 1 ? 'GALLON' : 'GALLONS'}`}
+                        </div>
+                    </skoash.Component>
                 </skoash.Component>
                 <skoash.MediaCollection
                     play={REVEAL_OPEN}
