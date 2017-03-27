@@ -236,7 +236,7 @@ export const FOOD_INFO = {
     [FOOD.MILK]:       { AMT: 54,  TYPE: FOOD_TYPE.BEV, },
     [FOOD.BANANA]:     { AMT: 46,  TYPE: FOOD_TYPE.FRUITVEG, },
     [FOOD.PIZZA]:      { AMT: 321, TYPE: FOOD_TYPE.STARCH, },
-    [FOOD.RICE]:       { AMT: 98,  TYPE: FOOD_TYPE.BEV, },
+    [FOOD.RICE]:       { AMT: 98,  TYPE: FOOD_TYPE.STARCH, },
     [FOOD.PEAS]:       { AMT: 356, TYPE: FOOD_TYPE.FRUITVEG, },
     [FOOD.FRIES]:      { AMT: 15,  TYPE: FOOD_TYPE.STARCH, },
     [FOOD.GRAPE_J]:    { AMT: 22,  TYPE: FOOD_TYPE.BEV, },
@@ -247,7 +247,7 @@ export const FOOD_INFO = {
     [FOOD.STEAK]:      { AMT: 330, TYPE: FOOD_TYPE.PROTEIN, },
     [FOOD.TOFU]:       { AMT: 244, TYPE: FOOD_TYPE.PROTEIN, },
     [FOOD.PASTA]:      { AMT: 100, TYPE: FOOD_TYPE.STARCH, },
-    [FOOD.CORN]:       { AMT: 107, TYPE: FOOD_TYPE.STARCH, },
+    [FOOD.CORN]:       { AMT: 107, TYPE: FOOD_TYPE.FRUITVEG, },
     [FOOD.PORK_CHOPS]: { AMT: 330, TYPE: FOOD_TYPE.PROTEIN, },
     [FOOD.BREAD]:      { AMT: 20,  TYPE: FOOD_TYPE.STARCH, },
 };
@@ -310,7 +310,7 @@ export const MEAL_INFO = {
             FOOD.PEAS,
             FOOD.FRIES,
             FOOD.GRAPE_J,
-            FOOD.HAMBERGER,
+            FOOD.HAMBURGER,
             FOOD.CHICKEN,
             FOOD.SOY_MILK,
             FOOD.SALAD,
@@ -320,7 +320,7 @@ export const MEAL_INFO = {
                 Amazing water conservation<br />
                 skills! You've designed a great<br />
                 lunch and helped the <br />
-                environment. Next step:
+                environment. Next stop:
                 <div className="soj-title">DINNER!</div>
             </div>
         ),
@@ -340,8 +340,10 @@ export const MEAL_INFO = {
         ],
         REVEAL: (
             <div>
-                You've instructed a fantastic dinner!<br />
-                Thank you for saving water <br />
+                You've constructed<br />
+                a fantastic dinner!<br />
+                Thank you<br />
+                for saving water <br />
                 when you eat!
             </div>
         ),
@@ -350,7 +352,7 @@ export const MEAL_INFO = {
     [MEAL.INSTRUCTIONS]: (
         <div>
             <div className="soj-title">INSTRUCTIONS</div>
-            Drag and drop the food items into the plate<br />
+            Drag and drop the food items into this plate<br />
             on the center. Fill each section of it and<br />
             stay under the water usage total. Keep track<br />
             of it using the drop meter on the right.

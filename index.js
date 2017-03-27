@@ -62,6 +62,8 @@ skoash.start(
             //InfoScreenComponent(2),
             //InstructionsScreen,
             PlateGameComponent(MEAL.BFAST),
+            PlateGameComponent(MEAL.LUNCH),
+            PlateGameComponent(MEAL.DINNER),
         ]}
         menus={{
             quit: QuitScreen,

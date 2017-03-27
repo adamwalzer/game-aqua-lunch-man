@@ -221,8 +221,11 @@
             background-color: $blue;
             border: 9px solid $red;
 
-            p {
-                font-size: 27px;
+            > div {
+                @include center;
+                width: 100%;
+                font-size: 48px;
+                color: $white;
             }
         }
 
@@ -236,11 +239,26 @@
         }
 
         .instructions {
+            > div {
+                font-size: 27px;
+                color: $black;
+            }
+
             .soj-title {
                 font-size: 70px;
                 padding: 15px;
                 border-bottom: 3px dashed $black;
                 margin-bottom: 30px;
+            }
+        }
+
+        .dinner {
+            > div {
+                font-size: 40px
+            }
+
+            .close-reveal {
+                display: none;
             }
         }
     }

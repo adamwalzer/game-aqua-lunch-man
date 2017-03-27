@@ -5,8 +5,6 @@ import Draggable from '../../shared/components/draggable/0.4';
 import Slider from '../../shared/components/slider/0.2';
 import { MEAL, MEAL_INFO, FOOD_TYPE, FOOD_INFO } from './variables';
 
-const INSTRUCTIONS = 'instructions';
-
 const STARCH = _.reduce(FOOD_INFO, (arr, info, name) => {
     if (info.TYPE === FOOD_TYPE.STARCH) { arr.push(name); } return arr;
 }, []);
@@ -30,11 +28,25 @@ const DROPZONE_ANSWERS = {
     [FOOD_TYPE.BEV]: BEV,
 };
 
+const FILL = 'filling';
+const EXCEED = 'exceeded';
+const INSTRUCTIONS = 'instructions';
+
 export default function (meal) {
+    const NEXT = meal === MEAL.BFAST ? 'lunch' : (meal === MEAL.LUNCH ? 'dinner' : 'thankyou');
+
     let revealList = [
-        <skoash.ListItem ref="next-meal" className={meal}>
+        <skoash.ListItem ref={NEXT} className={NEXT}>
             {MEAL_INFO[meal].REVEAL}
         </skoash.ListItem>
+    ];
+
+    let revealAssets = [
+        <skoash.Audio
+            type="voiceOver"
+            ref={NEXT}
+            src={`${CMWN.MEDIA.VO}${NEXT}.mp3`}
+        />
     ];
 
     if (meal === MEAL.BFAST) {
@@ -43,18 +55,48 @@ export default function (meal) {
                 {MEAL_INFO[INSTRUCTIONS]}
             </skoash.ListItem>
         );
+        revealAssets.push(
+            <skoash.MediaSequence
+                ref={INSTRUCTIONS}
+            >
+                <skoash.Audio
+                    type="voiceOver"
+                    src={`${CMWN.MEDIA.VO}${INSTRUCTIONS}.mp3`}
+                />
+                <skoash.Audio
+                    type="voiceOver"
+                    src={`${CMWN.MEDIA.VO}draganddrop.mp3`}
+                />
+            </skoash.MediaSequence>
+        );
     }
 
     return function (props, ref, key) {
         console.log(props.data);
+
         const AMOUNT = _.get(props, 'data.plate-food.amount', 0);
+        const DRAG = _.get(props, 'data.draggable.dragging', null);
+        const DRAG_DROP = _.get(props, 'data.draggable.dropped', null);
+        const DRAG_RETURN = _.get(props, 'data.draggable.returning', null);
+        const PLATE_DROP = _.get(props, 'data.plate-food.dropping', null);
+        const PLATE_RETURN = _.get(props, 'data.plate-food.returning', null);
+        const WATER_AUDIO = _.get(props, 'data.water.audio', null);
+        const FIRST_SLIDE = _.get(props, 'data.slider.firstSlide', null);
+        const DROPZONE_COMPLETE = _.get(props, 'data.dropzone.complete', null);
+        const REVEAL_OPEN = _.get(props, 'data.reveal.open', null);
 
         let foodInfo = FOOD_INFO; // make available to functions below
 
         let onCorrect = function (dropped, dropzoneRef) {
             let message = dropped.props.message;
             let amount = AMOUNT;
+            let audio = EXCEED;
             amount += foodInfo[message].AMT;
+
+            if (amount < MEAL_INFO[meal].LIMIT) {
+                audio = FILL;
+                dropzoneRef.complete();
+            }
 
             this.updateScreenData({
                 path: 'plate-food',
@@ -62,6 +104,33 @@ export default function (meal) {
                     amount,
                     dropping: message,
                     returning: null,
+                },
+            });
+
+            waterAudio.call(this, audio, waterAudio.bind(this, 'dummy', _.noop));
+        };
+
+        let waterAudio = function (audio, callback) {
+             this.updateScreenData({
+                path: 'water',
+                data: {
+                    audio,
+                },
+                callback,
+            });
+        };
+
+        let onRemove = function (item, dropzoneRef) {
+            if (!dropzoneRef.contains.length) {
+                dropzoneRef.incomplete();
+            }
+        };
+
+        let onDropzoneComplete = function () {
+            this.updateScreenData({
+                path: 'dropzone',
+                data: {
+                    complete: NEXT,
                 },
             });
         };
@@ -80,6 +149,12 @@ export default function (meal) {
             });
         };
 
+        let onCloseReveal = function (prev) {
+            if (prev === INSTRUCTIONS) return;
+
+            skoash.trigger('goto', { index: props.index + 1 });
+        };
+
         return (
             <skoash.Screen
                 {...props}
@@ -89,17 +164,17 @@ export default function (meal) {
                 backgroundAudio="bkg2"
             >
                 <skoash.MediaCollection
-                    play={null}
+                    play={WATER_AUDIO}
                 >
                     <skoash.Audio
                         type="sfx"
-                        ref="filing"
+                        ref={FILL}
                         src={`${CMWN.MEDIA.EFFECT}waterfilling.mp3`}
                         complete
                     />
                     <skoash.Audio
                         type="sfx"
-                        ref="exceeded"
+                        ref={EXCEED}
                         src={`${CMWN.MEDIA.EFFECT}waterexceeded.mp3`}
                         complete
                     />
@@ -108,8 +183,8 @@ export default function (meal) {
                 <Slider
                     className="left-panel"
                     display={4}
-                    freezeItem={_.get(props, 'data.plate-food.dropping', null)}
-                    unfreezeItem={_.get(props, 'data.plate-food.returning', null)}
+                    freezeItem={PLATE_DROP}
+                    unfreezeItem={PLATE_RETURN}
                 >
                     {
                         _.map(MEAL_INFO[meal].ITEMS, (item, key) => (
@@ -120,15 +195,13 @@ export default function (meal) {
                                 key={key}
                                 returnOnIncorrect
                                 stayOnCorrect={false}
-                                incorrect={
-                                    _.get(props, 'data.plate-food.returning', null) === item
-                                }
+                                incorrect={PLATE_RETURN === item}
                                 children={[
                                     <div className="food" />,
                                     <skoash.Reveal
                                         openReveal={
-                                            _.get(props, 'data.plate-food.dropping', null) === item ?
-                                                item : null // boolean check necessary
+                                            PLATE_DROP === item ?  item : null
+                                            // boolean check necessary
                                             // only want close-reveal to appear on dropped item
                                         }
                                         list={[<skoash.ListItem ref="item" />]}
@@ -142,7 +215,7 @@ export default function (meal) {
                 <Slider
                     className="shadow-panel"
                     display={4}
-                    adjustSlide={_.get(props, 'data.slider.firstSlide', null)}
+                    adjustSlide={FIRST_SLIDE}
                 >
                     {
                         _.map(MEAL_INFO[meal].ITEMS, (item, key) => (
@@ -154,17 +227,32 @@ export default function (meal) {
                 </Slider>
                 <Dropzone
                     ref="dropzone"
-                    dropped={_.get(props, 'data.draggable.dropped', null)}
-                    dragging={_.get(props, 'data.draggable.dragging', null)}
-                    returning={_.get(props, 'data.draggable.returning', null)}
+                    dropped={DRAG_DROP}
+                    dragging={DRAG}
+                    returning={DRAG_RETURN}
                     onCorrect={onCorrect}
+                    onRemove={onRemove}
+                    onComplete={onDropzoneComplete}
                     acceptNum={1}
+                    assets={[
+                        <skoash.Audio
+                            type="sfx"
+                            ref="drag"
+                            src={`${CMWN.MEDIA.EFFECT}drag.mp3`}
+                        />,
+                        <skoash.Audio
+                            type="sfx"
+                            ref="correct"
+                            src={`${CMWN.MEDIA.EFFECT}dropfood-g2.mp3`}
+                        />,
+                    ]}
                     dropzones={
                         _.map(FOOD_TYPE, (type) =>
-                            <skoash.Component
+                            <skoash.ListItem
                                 className={`dropzone-plate ${type}`}
                                 data-ref={type}
                                 answers={DROPZONE_ANSWERS[type]}
+                                correct
                             />)
                     }
                 />
@@ -173,13 +261,8 @@ export default function (meal) {
                         LIMIT:<br />
                         {MEAL_INFO[meal].LIMIT} GALLONS
                         <skoash.Reveal
-                            openReveal={
-                                AMOUNT >= MEAL_INFO[meal].LIMIT ?
-                                    'warn' : null
-                            }
-                            closeReveal={
-                                AMOUNT < MEAL_INFO[meal].LIMIT
-                            }
+                            openReveal={ AMOUNT >= MEAL_INFO[meal].LIMIT ?  'warn' : null }
+                            closeReveal={ AMOUNT < MEAL_INFO[meal].LIMIT }
                             list={[
                                 <skoash.ListItem ref="warn" >
                                     <div>TOO MUCH WATER</div>
@@ -203,9 +286,17 @@ export default function (meal) {
                         {`${AMOUNT} ${AMOUNT === 1 ? 'GALLON' : 'GALLONS'}`}
                     </div>
                 </skoash.Component>
+                <skoash.MediaCollection
+                    play={REVEAL_OPEN}
+                >
+                    {revealAssets}
+                </skoash.MediaCollection>
                 <skoash.Reveal
                     openOnStart={meal === MEAL.BFAST ? INSTRUCTIONS : null}
+                    openReveal={DROPZONE_COMPLETE}
                     list={revealList}
+                    openTarget="reveal"
+                    onClose={onCloseReveal}
                 />
             </skoash.Screen>
         );
