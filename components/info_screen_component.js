@@ -1,7 +1,6 @@
 import { INFO_SCREEN } from './variables';
 
-export default function (index) {
-
+export default function (index, trailingComponents) {
     return function (props, ref, key) {
         return (
             <skoash.Screen
@@ -26,6 +25,7 @@ export default function (index) {
                 <skoash.Component className="text">
                     {INFO_SCREEN[index].text}
                 </skoash.Component>
+                {trailingComponents}
             </skoash.Screen>
         );
     }

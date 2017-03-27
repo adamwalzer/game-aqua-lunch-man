@@ -108,6 +108,18 @@ export const INFO_SCREEN = [
             </div>
         ),
     },
+    {
+        vo: 'flip',
+        text: (
+            <div>
+                As a reward for taking<br />
+                the time to learn<br />
+                about the water that<br />
+                is used to make your<br />
+                food, here is a FLIP!
+            </div>
+        ),
+    }
 ];
 
 export const INFO_ANSWER = {

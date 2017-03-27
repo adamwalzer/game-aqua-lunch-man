@@ -74,7 +74,8 @@ button {
         (scale bkg1)
         (answer bkg2)
         (instructions bkg3)
-        (plate bkg3);
+        (plate bkg3)
+        (info-flip bkg4);
     @include screen-background-pairs($screen-pairs);
 
     .background {

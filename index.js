@@ -61,9 +61,15 @@ skoash.start(
             //InfoScreenComponent(1),
             //InfoScreenComponent(2),
             //InstructionsScreen,
-            PlateGameComponent(MEAL.BFAST),
-            PlateGameComponent(MEAL.LUNCH),
-            PlateGameComponent(MEAL.DINNER),
+            //PlateGameComponent(MEAL.BFAST),
+            //PlateGameComponent(MEAL.LUNCH),
+            //PlateGameComponent(MEAL.DINNER),
+            InfoScreenComponent(3, (
+                <skoash.Image
+                    className="flip"
+                    src={`${ENVIRONMENT.MEDIA}6f08c8dbd137731b51bbb53fdb1c6a0a.gif`}
+                />
+            )),
         ]}
         menus={{
             quit: QuitScreen,
