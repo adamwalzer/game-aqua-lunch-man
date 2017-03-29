@@ -14,7 +14,7 @@
     .correct-food {
         @include sprite-transform(.5, bottom, right);
         right: 200px;
-        bottom: 140px;
+        bottom: 120px;
     }
 
     &.OPEN {

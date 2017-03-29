@@ -51,7 +51,7 @@ skoash.start(
         screens={[
             iOSScreen,
             TitleScreen,
-            //VideoScreen ...no video yet,
+            //VideoScreen ...no video yet
             InfoScreenComponent(0),
             ScaleGameComponent(FOOD.WATERMELON, FOOD.PIZZA, LEFT),
             InfoAnswerComponent(FOOD.WATERMELON),
@@ -69,7 +69,7 @@ skoash.start(
             InfoAnswerComponent(FOOD.AVOCADO),
             ScaleGameComponent(FOOD.BANANA, FOOD.CHOCOLATE, LEFT),
             InfoAnswerComponent(FOOD.BANANA),
-            ScaleGameComponent(FOOD.TOFU, FOOD.PORK, LEFT),
+            ScaleGameComponent(FOOD.TOFU, FOOD.PORKCHOPS, LEFT),
             InfoAnswerComponent(FOOD.TOFU),
             InfoScreenComponent(1),
             InfoScreenComponent(2),
