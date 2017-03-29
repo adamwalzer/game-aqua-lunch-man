@@ -6,19 +6,19 @@ const NUMS = {
 
 const INSTRUCTIONS = [
     (
-        <div className="text">
+    <div className="text">
             Drag and drop the food items to<br />
             fill each section of your plate.
         </div>
     ),
     (
-        <div className="text">
+    <div className="text">
             Be sure to stay<br />
             under the water usage limit.
         </div>
     ),
     (
-        <div className="text">
+    <div className="text">
             Let's start with the first meal<br />
             of the day: BREAKFAST!
         </div>
@@ -26,9 +26,8 @@ const INSTRUCTIONS = [
 ];
 
 export default function (props, ref, key) {
-    let closeSound = function (ref) {
+    let closeSound = function () {
         let play = 'close';
-        let callback = setTimeout(nextInstr.bind(this), 500);
 
         this.updateScreenData({
             path: 'reveal',
@@ -60,12 +59,12 @@ export default function (props, ref, key) {
             <skoash.MediaCollection
                 play={`children-${_.get(props, 'data.reveal.index', null)}`}
             >
-                {_.map(NUMS, (value, key) => {
+                {_.map(NUMS, (v, k) => {
                     return (
                         <skoash.Audio
-                            key={key - 1}
+                            key={k - 1}
                             type="voiceOver"
-                            src={`${CMWN.MEDIA.VO}step${value}.mp3`}
+                            src={`${CMWN.MEDIA.VO}step${v}.mp3`}
                         />
                     );
                 })}
@@ -91,11 +90,11 @@ export default function (props, ref, key) {
                     start={nextInstr}
                     onClose={closeSound}
                     list={
-                        _.map(NUMS, (value, key) => {
+                        _.map(NUMS, (v, k) => {
                             return (
-                                <skoash.ListItem key={key - 1}>
-                                    <div className="soj-title">{`STEP ${_.toUpper(value)}`}</div>
-                                    {INSTRUCTIONS[key - 1]}
+                                <skoash.ListItem key={k - 1}>
+                                    <div className="soj-title">{`STEP ${_.toUpper(v)}`}</div>
+                                    {INSTRUCTIONS[k - 1]}
                                 </skoash.ListItem>
                             );
                         })

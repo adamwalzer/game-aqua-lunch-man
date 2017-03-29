@@ -25,5 +25,5 @@ export default function (id) {
                 <div className={`correct-food ${id}`} />
             </skoash.Screen>
         );
-    }
+    };
 }

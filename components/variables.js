@@ -6,7 +6,7 @@ export const FOOD = {
     APPLE_J: 'applejuice',
     AVOCADO: 'avocado',
     BANANA: 'banana',
-    BREAD: 'wheat',
+    BREAD: 'wheatbread',
     BROCCOLI: 'broccoli',
     CHEESE_SANDWICH: 'cheese',
     CHICKEN: 'chicken',
@@ -74,21 +74,21 @@ export const SCALE_FOOD = [
 export const INFO_SCREEN = [
     {
         vo: 'somefoods',
-        text : (
+        text: (
             <div>
                 Some foods need<br />
                 more water than others<br />
                 to be produced.<br /><br />
                 In this game,<br />
                 click on what food item<br />
-                you think users <br />
+                you think uses <br />
                 the least water.
             </div>
         ),
     },
     {
         vo: 'greatjob',
-        text : (
+        text: (
             <div>
                 <span className="soj-title">GREAT JOB!</span><br />
                 You have the power to<br />
@@ -99,7 +99,7 @@ export const INFO_SCREEN = [
     },
     {
         vo: 'dailymeals',
-        text : (
+        text: (
             <div>
                 Now let's see<br />
                 how much water<br />
@@ -135,7 +135,6 @@ export const INFO_ANSWER = {
     ),
     [FOOD.CHICKEN]: (
         <div>
-            
             <div className="soj-title">CHICKEN!</div>
             An 8 ounce serving of steak<br />
             takes 850 gallons of water to<br />
@@ -238,30 +237,30 @@ export const FOOD_TYPES = [
 ];
 
 export const FOOD_INFO = {
-    [FOOD.APPLE_J]:    { AMT: 34,  TYPE: FOOD_TYPE.BEV, },
-    [FOOD.ORANGE_J]:   { AMT: 33,  TYPE: FOOD_TYPE.BEV, },
-    [FOOD.OATMEAL]:    { AMT: 73,  TYPE: FOOD_TYPE.STARCH, },
-    [FOOD.CORNFLAKES]: { AMT: 34,  TYPE: FOOD_TYPE.STARCH, },
-    [FOOD.SAUSAGES]:   { AMT: 330, TYPE: FOOD_TYPE.PROTEIN, },
-    [FOOD.APPLE]:      { AMT: 27,  TYPE: FOOD_TYPE.FRUITVEG, },
-    [FOOD.EGGS]:       { AMT: 94,  TYPE: FOOD_TYPE.PROTEIN, },
-    [FOOD.MILK]:       { AMT: 54,  TYPE: FOOD_TYPE.BEV, },
-    [FOOD.BANANA]:     { AMT: 46,  TYPE: FOOD_TYPE.FRUITVEG, },
-    [FOOD.PIZZA]:      { AMT: 321, TYPE: FOOD_TYPE.STARCH, },
-    [FOOD.RICE]:       { AMT: 98,  TYPE: FOOD_TYPE.STARCH, },
-    [FOOD.PEAS]:       { AMT: 356, TYPE: FOOD_TYPE.FRUITVEG, },
-    [FOOD.FRIES]:      { AMT: 15,  TYPE: FOOD_TYPE.STARCH, },
-    [FOOD.GRAPE_J]:    { AMT: 22,  TYPE: FOOD_TYPE.BEV, },
-    [FOOD.HAMBURGER]:  { AMT: 330, TYPE: FOOD_TYPE.PROTEIN, },
-    [FOOD.CHICKEN]:    { AMT: 94,  TYPE: FOOD_TYPE.PROTEIN, },
-    [FOOD.SOY_MILK]:   { AMT: 164, TYPE: FOOD_TYPE.BEV, },
-    [FOOD.SALAD]:      { AMT: 15,  TYPE: FOOD_TYPE.FRUITVEG, },
-    [FOOD.STEAK]:      { AMT: 330, TYPE: FOOD_TYPE.PROTEIN, },
-    [FOOD.TOFU]:       { AMT: 244, TYPE: FOOD_TYPE.PROTEIN, },
-    [FOOD.PASTA]:      { AMT: 100, TYPE: FOOD_TYPE.STARCH, },
-    [FOOD.CORN]:       { AMT: 107, TYPE: FOOD_TYPE.FRUITVEG, },
-    [FOOD.PORK_CHOPS]: { AMT: 330, TYPE: FOOD_TYPE.PROTEIN, },
-    [FOOD.BREAD]:      { AMT: 20,  TYPE: FOOD_TYPE.STARCH, },
+    [FOOD.APPLE_J]: { AMT: 34, TYPE: FOOD_TYPE.BEV },
+    [FOOD.ORANGE_J]: { AMT: 33, TYPE: FOOD_TYPE.BEV },
+    [FOOD.OATMEAL]: { AMT: 73, TYPE: FOOD_TYPE.STARCH },
+    [FOOD.CORNFLAKES]: { AMT: 34, TYPE: FOOD_TYPE.STARCH },
+    [FOOD.SAUSAGES]: { AMT: 330, TYPE: FOOD_TYPE.PROTEIN },
+    [FOOD.APPLE]: { AMT: 27, TYPE: FOOD_TYPE.FRUITVEG },
+    [FOOD.EGGS]: { AMT: 94, TYPE: FOOD_TYPE.PROTEIN },
+    [FOOD.MILK]: { AMT: 54, TYPE: FOOD_TYPE.BEV },
+    [FOOD.BANANA]: { AMT: 46, TYPE: FOOD_TYPE.FRUITVEG },
+    [FOOD.PIZZA]: { AMT: 321, TYPE: FOOD_TYPE.STARCH },
+    [FOOD.RICE]: { AMT: 98, TYPE: FOOD_TYPE.STARCH },
+    [FOOD.PEAS]: { AMT: 356, TYPE: FOOD_TYPE.FRUITVEG },
+    [FOOD.FRIES]: { AMT: 15, TYPE: FOOD_TYPE.STARCH },
+    [FOOD.GRAPE_J]: { AMT: 22, TYPE: FOOD_TYPE.BEV },
+    [FOOD.HAMBURGER]: { AMT: 330, TYPE: FOOD_TYPE.PROTEIN },
+    [FOOD.CHICKEN]: { AMT: 94, TYPE: FOOD_TYPE.PROTEIN },
+    [FOOD.SOY_MILK]: { AMT: 164, TYPE: FOOD_TYPE.BEV },
+    [FOOD.SALAD]: { AMT: 15, TYPE: FOOD_TYPE.FRUITVEG },
+    [FOOD.STEAK]: { AMT: 330, TYPE: FOOD_TYPE.PROTEIN },
+    [FOOD.TOFU]: { AMT: 244, TYPE: FOOD_TYPE.PROTEIN },
+    [FOOD.PASTA]: { AMT: 100, TYPE: FOOD_TYPE.STARCH },
+    [FOOD.CORN]: { AMT: 107, TYPE: FOOD_TYPE.FRUITVEG },
+    [FOOD.PORK_CHOPS]: { AMT: 330, TYPE: FOOD_TYPE.PROTEIN },
+    [FOOD.BREAD]: { AMT: 20, TYPE: FOOD_TYPE.STARCH },
 };
 
 export const PLATE_FOOD = [

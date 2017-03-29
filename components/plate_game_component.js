@@ -1,5 +1,3 @@
-import classNames from 'classnames';
-
 import Dropzone from '../../shared/components/dropzone/0.6';
 import Draggable from '../../shared/components/draggable/0.4';
 import Slider from '../../shared/components/slider/0.2';
@@ -14,7 +12,7 @@ const PROTEIN = _.reduce(FOOD_INFO, (arr, info, name) => {
 }, []);
 
 const FRUITVEG = _.reduce(FOOD_INFO, (arr, info, name) => {
-    if (info.TYPE === FOOD_TYPE.FRUITVEG) { arr.push(name) } return arr;
+    if (info.TYPE === FOOD_TYPE.FRUITVEG) { arr.push(name); } return arr;
 }, []);
 
 const BEV = _.reduce(FOOD_INFO, (arr, info, name) => {
@@ -109,7 +107,7 @@ export default function (meal) {
         };
 
         let waterAudio = function (audio, callback) {
-             this.updateScreenData({
+            this.updateScreenData({
                 path: 'water',
                 data: {
                     audio,
@@ -187,12 +185,12 @@ export default function (meal) {
                     unfreezeItem={PLATE_RETURN}
                 >
                     {
-                        _.map(MEAL_INFO[meal].ITEMS, (item, key) => (
+                        _.map(MEAL_INFO[meal].ITEMS, (item, k) => (
                             <Draggable
                                 className={`plate-food ${item}`}
                                 ref={item}
                                 message={item}
-                                key={key}
+                                key={k}
                                 returnOnIncorrect
                                 stayOnCorrect={false}
                                 incorrect={PLATE_RETURN === item}
@@ -201,7 +199,7 @@ export default function (meal) {
                                 <div className="food" />
                                 <skoash.Reveal
                                     openReveal={
-                                        PLATE_DROP === item ?  item : null
+                                        PLATE_DROP === item ? item : null
                                         // boolean check necessary
                                         // only want close-reveal to appear on dropped item
                                     }
@@ -209,6 +207,7 @@ export default function (meal) {
                                     onClose={returnDraggable}
                                     complete
                                     checkComplete={false}
+                                    closeButtonContent={<div>&times;</div>}
                                 />
                             </Draggable>
                         ))
@@ -220,8 +219,8 @@ export default function (meal) {
                     adjustSlide={FIRST_SLIDE}
                 >
                     {
-                        _.map(MEAL_INFO[meal].ITEMS, (item, key) => (
-                            <div className={`plate-food ${item}`} key={key} >
+                        _.map(MEAL_INFO[meal].ITEMS, (item, k) => (
+                            <div className={`plate-food ${item}`} key={k} >
                                 <div className="shadow" />
                             </div>
                         ))
@@ -266,7 +265,7 @@ export default function (meal) {
                             {MEAL_INFO[meal].LIMIT} GALLONS
                         </div>
                         <skoash.Reveal
-                            openReveal={ AMOUNT >= MEAL_INFO[meal].LIMIT ?  'warn' : null }
+                            openReveal={ AMOUNT >= MEAL_INFO[meal].LIMIT ? 'warn' : null }
                             closeReveal={ AMOUNT < MEAL_INFO[meal].LIMIT }
                             complete
                             hideCloseButton
@@ -314,6 +313,6 @@ export default function (meal) {
                 />
             </skoash.Screen>
         );
-    }
+    };
 }
 

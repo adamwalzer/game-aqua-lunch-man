@@ -5,8 +5,8 @@
 .screen[id*="plate"] {
 
     .screen-content > .soj-title {
-        color: $yellow;
         margin-top: 15px;
+        color: $yellow;
     }
 
     .left-panel,
@@ -33,9 +33,9 @@
         right: 0;
         background-color: $yellow;
         text-shadow: 1px 1px 2px $black;
+        color: $light-blue;
         font-family: soupofjustice;
         font-size: 26px;
-        color: $light-blue;
 
         > div {
             @include center;
@@ -44,9 +44,9 @@
 
         .reveal {
             @include text-stroke(4, $white);
-            font-size: 60px;
+            line-height: .9;
             color: $red;
-            line-height: 0.9;
+            font-size: 60px;
 
             &.OPEN ~ .waterdrop .red {
                 opacity: 1;
@@ -54,32 +54,32 @@
         }
 
         .waterdrop {
+            margin: 0 auto;
             width: 115px;
             height: 214px;
-            margin: 0 auto;
 
             .red,
             .blue,
             .outline {
-                @include sprite-transform(0.43);
+                @include sprite-transform(.43);
             }
 
             .mask {
                 position: absolute;
                 top: 0;
                 left: 0;
+                transition: height 1s;
                 width: 100%;
                 overflow: hidden;
-                transition: height 1s;
 
                 .outline {
                     top: 0;
-                    transform: scale(0.43) translateX(-50%);
+                    transform: scale(.43) translateX(-50%);
                 }
             }
 
             .red {
-                transition: opacity 0.5s;
+                transition: opacity .5s;
                 opacity: 0;
             }
         }
@@ -106,10 +106,10 @@
         .prev-slide,
         .next-slide {
             @include center('false');
-            width: 0; 
-            height: 0; 
             border-right: 50px solid transparent;
             border-left: 50px solid transparent;
+            width: 0;
+            height: 0;
         }
 
         .prev-slide {
@@ -136,16 +136,18 @@
         }
 
         &.CORRECT {
+            // scss-lint:disable ImportantRule
             cursor: default !important;
             pointer-events: none !important;
+            // scss-lint:enable ImportantRule
         }
 
         &:hover:not(.CORRECT) .food,
         &.CORRECT .food,
         .food,
         .shadow {
-            @include sprite-transform(0.47);
-            pointer-events: none;  
+            @include sprite-transform(.47);
+            pointer-events: none;
 
             &::before {
                 @include center;
@@ -157,14 +159,15 @@
         }
 
         .reveal {
+            right: 0;
+            left: initial;
             width: 0;
             height: 0;
-            left: initial;
-            right: 0;
 
             .close-reveal {
-                @include block(20px, 20px, black);
                 right: initial;
+                color: $black;
+                font-size: 20px;
             }
         }
     }
@@ -173,9 +176,9 @@
         position: absolute;
         top: -80px;
         left: 90px;
+        transform: scale(.56);
         width: 781px;
         height: 779px;
-        transform: scale(0.56);
     }
 
     .dropzone-plate {
@@ -206,17 +209,17 @@
         background-color: $yellow-trans;
 
         li {
+            border: 9px solid $red;
+            background-color: $blue;
+            padding: 15px;
             width: 650px;
             height: 350px;
-            padding: 15px;
-            background-color: $blue;
-            border: 9px solid $red;
 
             > div {
                 @include center;
                 width: 100%;
-                font-size: 48px;
                 color: $white;
+                font-size: 48px;
             }
         }
 
@@ -226,21 +229,21 @@
 
         .instructions {
             > div {
-                font-size: 27px;
                 color: $black;
+                font-size: 27px;
             }
 
             .soj-title {
-                font-size: 70px;
-                padding: 15px;
-                border-bottom: 3px dashed $black;
                 margin-bottom: 30px;
+                border-bottom: 3px dashed $black;
+                padding: 15px;
+                font-size: 70px;
             }
         }
 
         .dinner {
             > div {
-                font-size: 40px
+                font-size: 40px;
             }
         }
     }

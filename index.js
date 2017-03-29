@@ -6,31 +6,33 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import QuitScreen from 'shared/components/quit_screen/0.2';
 
 import TitleScreen from './components/title_screen';
-import VideoScreen from './components/video_screen';
+
+//import VideoScreen from './components/video_screen';
 import InfoScreenComponent from './components/info_screen_component';
 import ScaleGameComponent from './components/scale_game_component';
 import InfoAnswerComponent from './components/info_answer_component';
 import InstructionsScreen from './components/instructions_screen';
 import PlateGameComponent from './components/plate_game_component';
 
-import {LEFT, RIGHT, MEAL, FOOD, SCALE_FOOD, CORRECT_FOOD, PLATE_FOOD, FOOD_TYPES} from './components/variables';
+import {
+    LEFT, RIGHT, MEAL, FOOD, SCALE_FOOD, CORRECT_FOOD, PLATE_FOOD, FOOD_TYPES
+} from './components/variables';
 
 let addHover = function (a, v, k) {
-     let i = k * 2;
+    let i = k * 2;
     a[i++] = `.${v}`;
     a[i] = `.${v}:hover`;
     return a;
 };
 
 const NAVIGATION_SELECTORS = _.reduce([
-        'next-screen.play div',
-        'close',
-        'prev-screen div',
-        'next-screen div',
-        'help',
-        'good-job',
-    ], addHover, {} 
-);
+    'next-screen.play div',
+    'close',
+    'prev-screen div',
+    'next-screen div',
+    'help',
+    'good-job',
+], addHover, {});
 const QUIT_SELECTORS = _.reduce(['quit-yes', 'quit-no'], addHover, {});
 const PLATE_SELECTORS = _.reduce(FOOD_TYPES, addHover, {});
 const PLATE_FOOD_SELECTORS = _.reduce(PLATE_FOOD, (a, v, k) => {
@@ -57,8 +59,8 @@ skoash.start(
             InfoAnswerComponent(FOOD.CHICKEN),
             ScaleGameComponent(FOOD.BROCCOLI, FOOD.CHEESE_SANDWICH, LEFT),
             InfoAnswerComponent(FOOD.BROCCOLI),
-            ScaleGameComponent(FOOD.WHEAT, FOOD.PASTA, LEFT),
-            InfoAnswerComponent(FOOD.WHEAT),
+            ScaleGameComponent(FOOD.BREAD, FOOD.PASTA, LEFT),
+            InfoAnswerComponent(FOOD.BREAD),
             ScaleGameComponent(FOOD.SODA, FOOD.APPLE_J, RIGHT),
             InfoAnswerComponent(FOOD.APPLE_J),
             ScaleGameComponent(FOOD.HAMBURGER, FOOD.EGGS, RIGHT),
@@ -137,7 +139,7 @@ skoash.start(
                 frameSelectors={QUIT_SELECTORS}
             />,
             <skoash.SpriteCSS
-                src={`${CMWN.MEDIA.SPRITE}sprite-scale`} 
+                src={`${CMWN.MEDIA.SPRITE}sprite-scale`}
                 spriteClass="scale-item"
                 spriteGroup={1}
                 frameSelectors={{
@@ -148,32 +150,32 @@ skoash.start(
                 }}
             />,
             <skoash.SpriteCSS
-                src={`${CMWN.MEDIA.SPRITE}sprite-g101`} 
+                src={`${CMWN.MEDIA.SPRITE}sprite-g101`}
                 spriteClass="scale-food"
                 spriteGroup={1}
                 frameSelectors={_.map(SCALE_FOOD, v => `.${v}`)}
             />,
             <skoash.SpriteCSS
-                src={`${CMWN.MEDIA.SPRITE}sprite-g102`} 
+                src={`${CMWN.MEDIA.SPRITE}sprite-g102`}
                 spriteClass="correct-food"
                 spriteGroup={1}
                 frameSelectors={_.map(CORRECT_FOOD, v => `.${v}`)}
             />,
             <skoash.SpriteCSS
-                src={`${CMWN.MEDIA.SPRITE}plate-sprite`} 
+                src={`${CMWN.MEDIA.SPRITE}plate-sprite`}
                 spriteClass="dropzone-plate"
                 spriteGroup={2}
                 frameSelectors={PLATE_SELECTORS}
             />,
             <skoash.SpriteCSS
-                src={`${CMWN.MEDIA.SPRITE}sprite2-plates01`} 
+                src={`${CMWN.MEDIA.SPRITE}sprite2-plates01`}
                 dataSrc={`${ENVIRONMENT.MEDIA}f87f1282731e1761620db4b241f26c92`}
                 spriteClass="plate-food"
                 spriteGroup={4}
                 frameSelectors={PLATE_FOOD_SELECTORS}
             />,
             <skoash.SpriteCSS
-                src={`${CMWN.MEDIA.SPRITE}sprites-waterdrop`} 
+                src={`${CMWN.MEDIA.SPRITE}sprites-waterdrop`}
                 spriteClass="waterdrop"
                 frameSelectors={{
                     0: ' .outline',

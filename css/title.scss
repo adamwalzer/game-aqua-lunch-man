@@ -10,7 +10,7 @@
         bottom: 105px;
 
         div {
-            @include sprite-transform(0.6);
+            @include sprite-transform(.6);
         }
     }
 }

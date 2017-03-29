@@ -3,9 +3,9 @@
 
 .screen[id*="scale"] {
     .soj-title {
-        font-size: 50px;
         margin-top: 15px;
         color: $red;
+        font-size: 50px;
     }
 
     .screen-content > .scale-container {
@@ -23,11 +23,11 @@
         .base,
         .arm,
         .plate.left {
-            @include sprite-transform(0.5);
+            @include sprite-transform(.5);
         }
 
         .plate.right {
-            @include sprite-transform(0.5, top, right);
+            @include sprite-transform(.5, top, right);
         }
 
         .plate {
@@ -79,11 +79,12 @@
             transition: bottom 1s;
 
             &:nth-of-type(1) {
-                @include sprite-transform(0.7, bottom);
+                @include sprite-transform(.7, bottom);
                 left: 300px;
             }
+
             &:nth-of-type(2) {
-                @include sprite-transform(0.7, bottom, right);
+                @include sprite-transform(.7, bottom, right);
                 right: 300px;
             }
 
@@ -98,13 +99,13 @@
         }
 
         .correct li {
-            font-size: 260px;
             color: $green;
+            font-size: 260px;
         }
 
         .incorrect li {
-            font-size: 400px;
             color: $red;
+            font-size: 400px;
         }
 
     }
@@ -112,12 +113,14 @@
     .scale-container.left ~ div .selectable,
     .scale-container.right ~ div .selectable {
         li {
-            pointer-events: none;
             cursor: default;
+            pointer-events: none;
         }
+
         .correct {
             bottom: 230px;
         }
+
         .incorrect {
             bottom: 150px;
         }

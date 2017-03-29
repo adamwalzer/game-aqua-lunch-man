@@ -6,19 +6,19 @@ export default function (foodleft, foodright, correct = LEFT) {
         let openMedia = function () {
             let choice = _.get(props, 'data.selectable.target.props.data-ref', null);
             if (!choice) return;
-    
+
             return choice === correct ? 'scale right' : 'scale wrong';
         };
 
         let openIcon = function (side) {
             let result = _.get(props, 'data.selectable.target.props.data-ref', null) === side ?
-                "icon" : null;
+                'icon' : null;
             return result;
         };
 
         let changeScale = function () {
-            let result =  _.get(props, 'data.selectable.target.props.data-ref', null) !== null ?
-                correct : null
+            let result = _.get(props, 'data.selectable.target.props.data-ref', null) !== null ?
+                correct : null;
             return result;
         };
 
@@ -107,7 +107,7 @@ export default function (foodleft, foodright, correct = LEFT) {
                                 complete
                                 checkComplete={false}
                                 list={[
-                                   <skoash.ListItem ref="icon">
+                                    <skoash.ListItem ref="icon">
                                         {correct === RIGHT ? <div>&#10004;</div> : <div>&times;</div>}
                                     </skoash.ListItem>
                                 ]}
@@ -117,5 +117,5 @@ export default function (foodleft, foodright, correct = LEFT) {
                 />
             </skoash.Screen>
         );
-    }
+    };
 }

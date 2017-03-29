@@ -22,7 +22,7 @@ body {
 
 button {
     &.close {
-        @include sprite-transform(0.3, top, right);
+        @include sprite-transform(.3, top, right);
     }
 
     &.next-screen,
@@ -39,7 +39,7 @@ button {
         bottom: 40px;
 
         div {
-            @include sprite-transform(0.6);
+            @include sprite-transform(.6);
         }
     }
 
@@ -52,11 +52,11 @@ button {
     }
 
     &.close-reveal {
-        bottom: 160px;
         right: 225px;
+        bottom: 160px;
 
         div {
-            @include sprite-transform(0.8);
+            @include sprite-transform(.8);
         }
     }
 
@@ -66,12 +66,12 @@ button {
     }
 
     &.quit-yes {
-        @include sprite-transform(0.6, top, left);
+        @include sprite-transform(.6, top, left);
         left: 20%;
     }
 
     &.quit-no {
-        @include sprite-transform(0.6, top, right);
+        @include sprite-transform(.6, top, right);
         right: 20%;
     }
 }
@@ -106,10 +106,10 @@ button {
 .soj-title {
     // TODO: fix smoothing 2/22/17 AIM
     @include text-stroke(4, $text-black);
+    line-height: .9;
+    color: $blue;
     font-family: soupofjustice;
     font-size: 80px;
-    line-height: 0.9;
-    color: $blue;
 }
 
 .reveal {

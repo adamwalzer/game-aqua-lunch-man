@@ -12,9 +12,9 @@
     }
 
     .correct-food {
-        @include sprite-transform(0.5, bottom, right);
-        right: 230px;
-        bottom: 100px;
+        @include sprite-transform(.5, bottom, right);
+        right: 200px;
+        bottom: 140px;
     }
 
     &.OPEN {
