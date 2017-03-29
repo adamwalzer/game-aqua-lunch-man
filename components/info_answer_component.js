@@ -22,7 +22,7 @@ export default function (id) {
                 <skoash.Component className="text">
                     {INFO_ANSWER[id]}
                 </skoash.Component>
-                <div className="sprite" />
+                <div className={`correct-food ${id}`} />
             </skoash.Screen>
         );
     }

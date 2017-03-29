@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { LEFT, RIGHT } from './variables';
 
 export default function (foodleft, foodright, correct = LEFT) {
@@ -55,24 +56,16 @@ export default function (foodleft, foodright, correct = LEFT) {
                     />
                 </skoash.MediaCollection>
                 <div className="soj-title">WHICH TAKES LESS WATER TO PRODUCE?</div>
-                <skoash.Reveal
-                    openReveal={changeScale()}
-                    closeReveal={changeScale()}
-                    openOnStart="balance"
-                    complete
-                    checkComplete={false}
-                    list={[
-                        <skoash.ListItem
-                            ref="balance"
-                        />,
-                        <skoash.ListItem
-                            ref={RIGHT}
-                        />,
-                        <skoash.ListItem
-                            ref={LEFT}
-                        />,
-                    ]}
-                />
+                <skoash.Component
+                    className={`scale-container ${changeScale()}`}
+                >
+                    <div className="scale-item plate left" />
+                    <div className="scale-item plate right" />
+                    <div className="arm-container">
+                        <div className="scale-item arm" />
+                    </div>
+                    <div className="scale-item base" />
+                </skoash.Component>
                 <skoash.Selectable
                     ref="selectable"
                     dataTarget="selectable"
@@ -80,31 +73,43 @@ export default function (foodleft, foodright, correct = LEFT) {
                     list={[
                         <skoash.Component
                             data-ref={LEFT}
-                            className={(correct === LEFT ? 'correct ' : 'incorrect ') + foodright}
+                            className={classNames(
+                                'scale-food',
+                                foodleft, {
+                                    'correct': correct === LEFT,
+                                    'incorrect': correct === RIGHT,
+                                }
+                            )}
                         >
                             <skoash.Reveal
                                 openReveal={openIcon(LEFT)}
                                 complete
                                 checkComplete={false}
                                 list={[
-                                    <skoash.ListItem
-                                        ref="icon"
-                                    />
+                                    <skoash.ListItem ref="icon">
+                                        {correct === LEFT ? <div>&#10004;</div> : <div>&times;</div>}
+                                    </skoash.ListItem>
                                 ]}
                             />
                         </skoash.Component>,
                         <skoash.Component
                             data-ref={RIGHT}
-                            className={(correct === RIGHT ? 'correct ' : 'incorrect ') + foodright}
+                            className={classNames(
+                                'scale-food',
+                                foodright, {
+                                    'correct': correct === RIGHT,
+                                    'incorrect': correct === LEFT,
+                                }
+                            )}
                         >
                             <skoash.Reveal
                                 openReveal={openIcon(RIGHT)}
                                 complete
                                 checkComplete={false}
                                 list={[
-                                    <skoash.ListItem
-                                        ref="icon"
-                                    />
+                                   <skoash.ListItem ref="icon">
+                                        {correct === RIGHT ? <div>&#10004;</div> : <div>&times;</div>}
+                                    </skoash.ListItem>
                                 ]}
                             />
                         </skoash.Component>,

@@ -3,7 +3,7 @@ import config from './config';
 import Loader from 'shared/components/loader/0.1';
 
 import iOSScreen from 'shared/components/ios_splash_screen/0.1';
-import QuitScreen from 'shared/components/quit_screen/0.1';
+import QuitScreen from 'shared/components/quit_screen/0.2';
 
 import TitleScreen from './components/title_screen';
 import VideoScreen from './components/video_screen';
@@ -15,19 +15,30 @@ import PlateGameComponent from './components/plate_game_component';
 
 import {LEFT, RIGHT, MEAL, FOOD, SCALE_FOOD, CORRECT_FOOD, PLATE_FOOD, FOOD_TYPES} from './components/variables';
 
+let addHover = function (a, v, k) {
+     let i = k * 2;
+    a[i++] = `.${v}`;
+    a[i] = `.${v}:hover`;
+    return a;
+};
+
+const NAVIGATION_SELECTORS = _.reduce([
+        'next-screen.play div',
+        'close',
+        'prev-screen div',
+        'next-screen div',
+        'help',
+        'good-job',
+    ], addHover, {} 
+);
+const QUIT_SELECTORS = _.reduce(['quit-yes', 'quit-no'], addHover, {});
+const PLATE_SELECTORS = _.reduce(FOOD_TYPES, addHover, {});
 const PLATE_FOOD_SELECTORS = _.reduce(PLATE_FOOD, (a, v, k) => {
     let i = k * 4;
     a[i++] = `.${v} .food`;
     a[i++] = `.${v}:hover:not(.CORRECT) .food`;
     a[i++] = `.${v}.CORRECT .food`;
     a[i] = `.${v} .shadow`;
-    return a;
-}, {});
-
-const PLATE_SELECTORS = _.reduce(FOOD_TYPES, (a, v, k) => {
-    let i = k * 2;
-    a[i++] = `.${v}`;
-    a[i] = `.${v}:hover`;
     return a;
 }, {});
 
@@ -38,32 +49,32 @@ skoash.start(
         screens={[
             iOSScreen,
             TitleScreen,
-            //VideoScreen,
-            //InfoScreenComponent(0),
-            //ScaleGameComponent(FOOD.WATERMELON, FOOD.PIZZA, LEFT),
-            //InfoAnswerComponent(FOOD.WATERMELON),
-            //ScaleGameComponent(FOOD.CHICKEN, FOOD.STEAK, LEFT),
-            //InfoAnswerComponent(FOOD.CHICKEN),
-            //ScaleGameComponent(FOOD.BROCCOLI, FOOD.CHEESE_SANDWICH, LEFT),
-            //InfoAnswerComponent(FOOD.BROCCOLI),
-            //ScaleGameComponent(FOOD.WHEAT, FOOD.PASTA, LEFT),
-            //InfoAnswerComponent(FOOD.WHEAT),
-            //ScaleGameComponent(FOOD.SODA, FOOD.APPLE_J, RIGHT),
-            //InfoAnswerComponent(FOOD.APPLE_J),
-            //ScaleGameComponent(FOOD.HAMBURGER, FOOD.EGGS, RIGHT),
-            //InfoAnswerComponent(FOOD.EGGS),
-            //ScaleGameComponent(FOOD.LAMB, FOOD.AVOCADO, RIGHT),
-            //InfoAnswerComponent(FOOD.AVOCADO),
-            //ScaleGameComponent(FOOD.BANANA, FOOD.CHOCOLATE, LEFT),
-            //InfoAnswerComponent(FOOD.BANANA),
-            //ScaleGameComponent(FOOD.TOFU, FOOD.PORK, LEFT),
-            //InfoAnswerComponent(FOOD.TOFU),
-            //InfoScreenComponent(1),
-            //InfoScreenComponent(2),
-            //InstructionsScreen,
-            //PlateGameComponent(MEAL.BFAST),
-            //PlateGameComponent(MEAL.LUNCH),
-            //PlateGameComponent(MEAL.DINNER),
+            //VideoScreen ...no video yet,
+            InfoScreenComponent(0),
+            ScaleGameComponent(FOOD.WATERMELON, FOOD.PIZZA, LEFT),
+            InfoAnswerComponent(FOOD.WATERMELON),
+            ScaleGameComponent(FOOD.CHICKEN, FOOD.STEAK, LEFT),
+            InfoAnswerComponent(FOOD.CHICKEN),
+            ScaleGameComponent(FOOD.BROCCOLI, FOOD.CHEESE_SANDWICH, LEFT),
+            InfoAnswerComponent(FOOD.BROCCOLI),
+            ScaleGameComponent(FOOD.WHEAT, FOOD.PASTA, LEFT),
+            InfoAnswerComponent(FOOD.WHEAT),
+            ScaleGameComponent(FOOD.SODA, FOOD.APPLE_J, RIGHT),
+            InfoAnswerComponent(FOOD.APPLE_J),
+            ScaleGameComponent(FOOD.HAMBURGER, FOOD.EGGS, RIGHT),
+            InfoAnswerComponent(FOOD.EGGS),
+            ScaleGameComponent(FOOD.LAMB, FOOD.AVOCADO, RIGHT),
+            InfoAnswerComponent(FOOD.AVOCADO),
+            ScaleGameComponent(FOOD.BANANA, FOOD.CHOCOLATE, LEFT),
+            InfoAnswerComponent(FOOD.BANANA),
+            ScaleGameComponent(FOOD.TOFU, FOOD.PORK, LEFT),
+            InfoAnswerComponent(FOOD.TOFU),
+            InfoScreenComponent(1),
+            InfoScreenComponent(2),
+            InstructionsScreen,
+            PlateGameComponent(MEAL.BFAST),
+            PlateGameComponent(MEAL.LUNCH),
+            PlateGameComponent(MEAL.DINNER),
             InfoScreenComponent(3, (
                 <skoash.Image
                     className="flip"
@@ -72,7 +83,14 @@ skoash.start(
             )),
         ]}
         menus={{
-            quit: QuitScreen,
+            quit: QuitScreen({
+                copy: (
+                    <div className="copy">
+                        <h2>Are you sure you want to quit?</h2>
+                        <h2>Your game progress will be saved</h2>
+                    </div>
+                ),
+            }),
         }}
         assets={[
             <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}bkg1.jpg`} />,
@@ -80,10 +98,6 @@ skoash.start(
             <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}bkg3.jpg`} />,
             <skoash.Image className="hidden" src={`${CMWN.MEDIA.IMAGE}bkg4.jpg`} />,
             <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}sprite-scale.png`} />,
-            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}sprites-waterdrop.png`} />,
-            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}sprite2-plates01.png`} />,
-            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}sprite-g101.png`} />,
-            <skoash.Image className="hidden" src={`${CMWN.MEDIA.SPRITE}sprite-g102.png`} />,
             <skoash.Audio
                 type="sfx"
                 ref="button"
@@ -112,45 +126,44 @@ skoash.start(
             <div className="background bkg4" />,
             <skoash.SpriteCSS
                 src={`${CMWN.MEDIA.SPRITE}main-nav`}
-                spriteClass="nav"
+                spriteClass="navigation"
                 spriteGroup={2}
-                frameSelectors={{
-                     0: '.play',
-                     1: '.play:hover',
-                     2: '.close',
-                     3: '.close:hover',
-                     4: '.prev-screen',
-                     5: '.prev-screen:hover',
-                     6: '.next-screen',
-                     7: '.next-screen:hover',
-                     8: '.help',
-                     9: '.help:hover',
-                    10: '.good-job',
-                    11: '.good-job:hover',
-                }}
+                frameSelectors={NAVIGATION_SELECTORS}
             />,
             <skoash.SpriteCSS
                 src={`${CMWN.MEDIA.SPRITE}quit-sprite`}
-                spriteClass="quit"
+                spriteClass="quit-button"
                 spriteGroup={2}
+                frameSelectors={QUIT_SELECTORS}
+            />,
+            <skoash.SpriteCSS
+                src={`${CMWN.MEDIA.SPRITE}sprite-scale`} 
+                spriteClass="scale-item"
+                spriteGroup={1}
                 frameSelectors={{
-                    0: '.yes',
-                    1: '.yes:hover',
-                    2: '.no',
-                    3: '.no:hover',
+                    0: '.plate',
+                    1: '.plate',
+                    2: '.base',
+                    3: '.arm',
                 }}
             />,
             <skoash.SpriteCSS
                 src={`${CMWN.MEDIA.SPRITE}sprite-g101`} 
                 spriteClass="scale-food"
                 spriteGroup={1}
-                frameSelectors={SCALE_FOOD}
+                frameSelectors={_.map(SCALE_FOOD, v => `.${v}`)}
             />,
             <skoash.SpriteCSS
                 src={`${CMWN.MEDIA.SPRITE}sprite-g102`} 
                 spriteClass="correct-food"
                 spriteGroup={1}
-                frameSelectors={CORRECT_FOOD}
+                frameSelectors={_.map(CORRECT_FOOD, v => `.${v}`)}
+            />,
+            <skoash.SpriteCSS
+                src={`${CMWN.MEDIA.SPRITE}plate-sprite`} 
+                spriteClass="dropzone-plate"
+                spriteGroup={2}
+                frameSelectors={PLATE_SELECTORS}
             />,
             <skoash.SpriteCSS
                 src={`${CMWN.MEDIA.SPRITE}sprite2-plates01`} 
@@ -158,12 +171,6 @@ skoash.start(
                 spriteClass="plate-food"
                 spriteGroup={4}
                 frameSelectors={PLATE_FOOD_SELECTORS}
-            />,
-            <skoash.SpriteCSS
-                src={`${CMWN.MEDIA.SPRITE}plate-sprite`} 
-                spriteClass="dropzone-plate"
-                spriteGroup={2}
-                frameSelectors={PLATE_SELECTORS}
             />,
             <skoash.SpriteCSS
                 src={`${CMWN.MEDIA.SPRITE}sprites-waterdrop`} 

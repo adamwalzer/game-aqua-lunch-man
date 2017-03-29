@@ -11,11 +11,10 @@
         font-size: 27px;
     }
 
-    .sprite {
-        @include block(220px, 160px, orange);
-        position: absolute;
-        right: 130px;
-        bottom: 30px;
+    .correct-food {
+        @include sprite-transform(0.5, bottom, right);
+        right: 230px;
+        bottom: 100px;
     }
 
     &.OPEN {

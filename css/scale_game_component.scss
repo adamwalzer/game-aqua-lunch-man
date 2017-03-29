@@ -4,69 +4,122 @@
 .screen[id*="scale"] {
     .soj-title {
         font-size: 50px;
-        margin-top:15px;
+        margin-top: 15px;
         color: $red;
     }
 
-    .reveal {
-        .close-reveal {
-            display: none;
-        }
-    }
-
-    .screen-content > .reveal {
+    .screen-content > .scale-container {
+        position: absolute;
+        top: 55%;
+        left: 50%;
         z-index: 0;
 
-        li {
+        .arm-container {
             position: absolute;
-            top: 300px;
+            top: -130px;
+            transition: transform 1s;
+        }
 
-            @for $i from 1 through 3 {
-                &:nth-of-type(#{$i}) {
-                    @include scale($i, 0.5);
-                }
+        .base,
+        .arm,
+        .plate.left {
+            @include sprite-transform(0.5);
+        }
+
+        .plate.right {
+            @include sprite-transform(0.5, top, right);
+        }
+
+        .plate {
+            transition: top 1s;
+        }
+
+        .plate.left {
+            left: -180px;
+        }
+
+        .plate.right {
+            right: -180px;
+        }
+
+        &.left {
+            .plate.left {
+                top: -40px;
+            }
+
+            .plate.right {
+                top: 40px;
+            }
+
+            .arm-container {
+                transform: rotate(13deg);
             }
         }
+
+        &.right {
+            .plate.left {
+                top: 40px;
+            }
+
+            .plate.right {
+                top: -40px;
+            }
+
+            .arm-container {
+                transform: rotate(-13deg);
+            }
+        }
+
     }
 
     .selectable {
         @include cover;
 
         > li {
-            @include block(100px, 100px, green);
-            position: absolute;
-            top: 300px;
-            transition: top 1s;
+            transition: bottom 1s;
 
             &:nth-of-type(1) {
-                left: 250px;
+                @include sprite-transform(0.7, bottom);
+                left: 300px;
             }
             &:nth-of-type(2) {
-                left: 610px;
+                @include sprite-transform(0.7, bottom, right);
+                right: 300px;
             }
+
+            &:nth-of-type(1),
+            &:nth-of-type(2) {
+                bottom: 190px;
+            }
+        }
+
+        .reveal {
+            @include text-stroke(6, $black);
         }
 
         .correct li {
-            @include block(30px, 30px, white);
+            font-size: 260px;
+            color: $green;
         }
 
         .incorrect li {
-            @include block(30px, 30px, black);
+            font-size: 400px;
+            color: $red;
         }
 
     }
 
-    .reveal.open-left ~ div .selectable,
-    .reveal.open-right ~ div .selectable {
+    .scale-container.left ~ div .selectable,
+    .scale-container.right ~ div .selectable {
         li {
             pointer-events: none;
             cursor: default;
         }
         .correct {
-            top: 220px;
+            bottom: 230px;
         }
         .incorrect {
-            top: 330px;
+            bottom: 150px;
         }
     }
 }
