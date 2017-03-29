@@ -5,7 +5,12 @@
         width: 100%;
     }
 
-    button.next-screen {
-        @include block(100px, 100px, blue);
+    .next-screen {
+        right: 105px;
+        bottom: 105px;
+
+        div {
+            @include sprite-transform(0.6);
+        }
     }
 }

@@ -72,8 +72,6 @@ export default function (meal) {
     }
 
     return function (props, ref, key) {
-        console.log(props.data);
-
         const AMOUNT = _.get(props, 'data.plate-food.amount', 0);
         const DRAG = _.get(props, 'data.draggable.dragging', null);
         const DRAG_DROP = _.get(props, 'data.draggable.dropped', null);
@@ -271,6 +269,7 @@ export default function (meal) {
                             openReveal={ AMOUNT >= MEAL_INFO[meal].LIMIT ?  'warn' : null }
                             closeReveal={ AMOUNT < MEAL_INFO[meal].LIMIT }
                             complete
+                            hideCloseButton
                             list={[
                                 <skoash.ListItem ref="warn" >
                                     <div>TOO MUCH WATER</div>
@@ -280,14 +279,16 @@ export default function (meal) {
                         <div className="waterdrop" >
                             <div className="outline" />
                             <div className="blue" />
-                            <div className="red" />
                             <div
                                 className="mask"
                                 style={{
                                     'height': Math.max(100 - (Math.floor(100 *
                                         (AMOUNT / MEAL_INFO[meal].LIMIT))), 0) + '%',
                                 }}
-                            />
+                            >
+                                <div className="outline" />
+                            </div>
+                            <div className="red" />
                         </div>
                         <br />
                         <div>
@@ -307,6 +308,9 @@ export default function (meal) {
                     list={revealList}
                     openTarget="reveal"
                     onClose={onCloseReveal}
+                    hideCloseButton={meal === MEAL.DINNER}
+                    closeButtonClassName="next-screen"
+                    closeButtonContent={<div />}
                 />
             </skoash.Screen>
         );

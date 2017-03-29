@@ -14,18 +14,15 @@ body {
 .skoash-game {
     > .menu {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 35px;
+        right: 35px;
         z-index: 2;
     }
 }
 
 button {
     &.close {
-        @include block(53px, 53px, red);
-        position: absolute;
-        top: 5px;
-        right: 5px;
+        @include sprite-transform(0.3, top, right);
     }
 
     &.next-screen,
@@ -33,37 +30,49 @@ button {
     &.close-reveal {
         display: block;
         position: absolute;
-        bottom: 10px;
         z-index: 10;
         margin: 0;
-        width: 140px;
-        height: 55px;
     }
 
-    &.close-reveal,
+    &.next-screen,
+    &.prev-screen {
+        bottom: 40px;
+
+        div {
+            @include sprite-transform(0.6);
+        }
+    }
+
     &.next-screen {
-        @include block(75px, 75px, red);
-        right: 15px;
+        right: 45px;
     }
 
     &.prev-screen {
-        @include block(75px, 75px, red);
-        left: 15px;
+        left: 45px;
+    }
+
+    &.close-reveal {
+        bottom: 160px;
+        right: 225px;
+
+        div {
+            @include sprite-transform(0.8);
+        }
     }
 
     &.quit-yes,
     &.quit-no {
-        bottom: 10%;
-        width: 220px;
-        height: 110px;
+        bottom: 20%;
     }
 
     &.quit-yes {
-        left: 17%;
+        @include sprite-transform(0.6, top, left);
+        left: 20%;
     }
 
     &.quit-no {
-        right: 17%;
+        @include sprite-transform(0.6, top, right);
+        right: 20%;
     }
 }
 
@@ -77,6 +86,12 @@ button {
         (plate bkg3)
         (info-flip bkg4);
     @include screen-background-pairs($screen-pairs);
+
+    &.MENU-quit {
+        .background.bkg4 {
+            opacity: 1;
+        }
+    }
 
     .background {
         $background-pairs:

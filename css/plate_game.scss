@@ -51,10 +51,6 @@
             &.OPEN ~ .waterdrop .red {
                 opacity: 1;
             }
-
-            .close-reveal {
-                display: none;
-            }
         }
 
         .waterdrop {
@@ -62,24 +58,23 @@
             height: 214px;
             margin: 0 auto;
 
-            .outline,
             .red,
             .blue,
+            .outline {
+                @include sprite-transform(0.43);
+            }
+
             .mask {
                 position: absolute;
                 top: 0;
                 left: 0;
                 width: 100%;
-            }
+                overflow: hidden;
+                transition: height 1s;
 
-            .outline,
-            .red,
-            .blue {
-                height: 100%;
-                transform: scale(0.43);
-
-                &::before {
-                    @include center;
+                .outline {
+                    top: 0;
+                    transform: scale(0.43) translateX(-50%);
                 }
             }
 
@@ -87,13 +82,7 @@
                 transition: opacity 0.5s;
                 opacity: 0;
             }
-
-            .mask {
-                background-color: $yellow;
-                transition: height 1s;
-            }
         }
-
     }
 
     .slider {
@@ -101,9 +90,9 @@
 
         .content {
             @include center('false');
-            top: 87px;
-            width: 65px;
-            height: 72px;
+            top: 58px;
+            width: 85px;
+            height: 85px;
             text-align: center;
 
             > * {
@@ -116,16 +105,21 @@
 
         .prev-slide,
         .next-slide {
-            @include block(75px, 50px, pink);
             @include center('false');
+            width: 0; 
+            height: 0; 
+            border-right: 50px solid transparent;
+            border-left: 50px solid transparent;
         }
 
         .prev-slide {
             top: 10px;
+            border-bottom: 35px solid $red;
         }
 
         .next-slide {
             bottom: 95px;
+            border-top: 35px solid $red;
         }
     }
 
@@ -150,11 +144,8 @@
         &.CORRECT .food,
         .food,
         .shadow {
-            position: absolute;
+            @include sprite-transform(0.47);
             pointer-events: none;  
-            transform: scale(0.4);
-            width: 100%;
-            height: 100%;
 
             &::before {
                 @include center;
@@ -229,11 +220,6 @@
             }
         }
 
-        .close-reveal {
-            top: 60px;
-            right: 125px;
-        }
-
         .soj-title {
             color: $white;
         }
@@ -255,10 +241,6 @@
         .dinner {
             > div {
                 font-size: 40px
-            }
-
-            .close-reveal {
-                display: none;
             }
         }
     }
