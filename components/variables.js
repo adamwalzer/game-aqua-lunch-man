@@ -314,6 +314,7 @@ export const MEAL_INFO = {
                 <div className="soj-title">LUNCH</div>
             </div>
         ),
+        NEXT: MEAL.LUNCH,
     },
     [MEAL.LUNCH]: {
         LIMIT: 1000,
@@ -337,7 +338,7 @@ export const MEAL_INFO = {
                 <div className="soj-title">DINNER!</div>
             </div>
         ),
-
+        NEXT: MEAL.DINNER,
     },
     [MEAL.DINNER]: {
         LIMIT: 425,
@@ -360,7 +361,7 @@ export const MEAL_INFO = {
                 when you eat!
             </div>
         ),
-
+        NEXT: 'thankyou',
     },
     [MEAL.INSTRUCTIONS]: (
         <div>

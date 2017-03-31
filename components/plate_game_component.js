@@ -31,10 +31,8 @@ const EXCEED = 'exceeded';
 const INSTRUCTIONS = 'instructions';
 
 export default function (meal) {
-    const NEXT = meal === MEAL.BFAST ? 'lunch' : (meal === MEAL.LUNCH ? 'dinner' : 'thankyou');
-
     let revealList = [
-        <skoash.ListItem ref={NEXT} className={NEXT}>
+        <skoash.ListItem ref={MEAL_INFO[meal].NEXT} className={MEAL_INFO[meal].NEXT}>
             {MEAL_INFO[meal].REVEAL}
         </skoash.ListItem>
     ];
@@ -42,8 +40,8 @@ export default function (meal) {
     let revealAssets = [
         <skoash.Audio
             type="voiceOver"
-            ref={NEXT}
-            src={`${CMWN.MEDIA.VO}${NEXT}.mp3`}
+            ref={MEAL_INFO[meal].NEXT}
+            src={`${CMWN.MEDIA.VO}${MEAL_INFO[meal].NEXT}.mp3`}
         />
     ];
 
@@ -126,7 +124,7 @@ export default function (meal) {
             this.updateScreenData({
                 path: 'dropzone',
                 data: {
-                    complete: NEXT,
+                    complete: MEAL_INFO[meal].NEXT,
                 },
             });
         };
