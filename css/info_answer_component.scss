@@ -4,35 +4,35 @@
     @include circle-text;
 
     .circle {
-        transition: transform 1s;
         transform: translateX(-100%);
+        transition: transform 1s;
 
         img {
-            transition: transform 1s;
             transform: rotate(-360deg);
+            transition: transform 1s;
         }
     }
 
     .text {
-        font-size: 27px;
         transition: opacity 1.5s;
-        transition-delay: 0.5s;
         opacity: 0;
+        font-size: 27px;
+        transition-delay: .5s;
     }
 
     .soj-title {
-        font-size: 71px;
-        transition: transform 1.5s;
-        transition-delay: 1s;
         transform: translateY(-400%);
+        transition: transform 1.5s;
+        font-size: 71px;
+        transition-delay: 1s;
     }
 
     .food-container {
         position: absolute;
-        bottom: 0;
         right: 0;
-        height: 70%;
+        bottom: 0;
         width: 35%;
+        height: 70%;
 
         .correct-food {
             @include sprite-transform(.5, bottom, right);

@@ -6,7 +6,6 @@ import iOSScreen from 'shared/components/ios_splash_screen/0.1';
 import QuitScreen from 'shared/components/quit_screen/0.2';
 
 import TitleScreen from './components/title_screen';
-
 //import VideoScreen from './components/video_screen';
 import InfoScreenComponent from './components/info_screen_component';
 import ScaleGameComponent from './components/scale_game_component';
