@@ -104,7 +104,6 @@ button {
 }
 
 .soj-title {
-    // TODO: fix smoothing 2/22/17 AIM
     @include text-stroke(4, $text-black);
     line-height: .9;
     color: $blue;
@@ -119,3 +118,4 @@ button {
 .selectable {
     @include selectable;
 }
+

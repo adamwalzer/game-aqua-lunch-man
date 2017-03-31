@@ -2,18 +2,6 @@
 @import '../../shared/css/mixins/import';
 @import '../../shared/css/animate';
 
-@mixin scale($row, $scale) {
-    $img-width: 1200px * $scale;
-    $img-height: 2574px * $scale;
-    @include sprite($sprite + 'sprite-scale.png', $img-width, $img-height, 1, 3, 1, $row, 1);
-}
-
-@mixin block($width, $height, $color) {
-    width: $width;
-    height: $height;
-    background-color: $color;
-}
-
 @mixin frame($image-src: none, $color: initial) {
     @if $image-src != none {
         @include background($image + $image-src);
