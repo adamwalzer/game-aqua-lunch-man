@@ -12,19 +12,19 @@ export default function (index, trailingComponents) {
             >
                 <skoash.Audio
                     type="voiceOver"
+                    delay={2000}
                     src={`${CMWN.MEDIA.VO}${INFO_SCREEN[index].vo}.mp3`}
                 />
+                <skoash.Component className="circle">
+                    <skoash.Image src={`${CMWN.MEDIA.IMAGE}circleframe.png`}/>
+                </skoash.Component>
+                <div className="text">
+                    {INFO_SCREEN[index].text}
+                </div>
                 <skoash.Image
                     className="sprite"
                     src={`${CMWN.MEDIA.IMAGE}aqualunchman.png`}
                 />
-                <skoash.Image
-                    className="circle"
-                    src={`${CMWN.MEDIA.IMAGE}circleframe.png`}
-                />
-                <skoash.Component className="text">
-                    {INFO_SCREEN[index].text}
-                </skoash.Component>
                 {trailingComponents}
             </skoash.Screen>
         );

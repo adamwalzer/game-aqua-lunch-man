@@ -247,5 +247,21 @@
                 font-size: 40px;
             }
         }
+
+        &.open-instructions .close-reveal {
+            right: 180px;
+            bottom: 120px;
+        }
+    }
+}
+
+// necessary while the plate-game close-reveal is still using
+// the next-screen sprite image
+// TODO remove once sprite image available AIM 3/31/17
+.skoash-game:not(.VOICE-OVER) .screen[id*="plate"] {
+    .screen-content > .reveal .close-reveal {
+        opacity: 1;
+        cursor: pointer;
+        pointer-events: auto;
     }
 }

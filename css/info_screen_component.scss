@@ -8,23 +8,55 @@
         bottom: 30px;
         left: -140px;
         width: 440px;
+        transition: transform 1s;
+        transform: translateX(-100%);
+    }
+
+    .circle {
+        transition: transform 2s;
+        transform: translateX(200%);
+
+        img {
+            transition: transform 2s;
+            transform: rotate(360deg);
+        }
     }
 
     &.OPEN {
-        .text {
+        .sprite {
+            transform: none;
+        }
+
+        .text .animated {
             animation-name: slideInLeft;
-            animation-delay: 2s;
+            animation-delay: 1s;
         }
 
         .circle {
-            animation-name: rotateIn;
+            transform: none;
+
+            img {
+                transform: none;
+            }
         }
     }
 }
 
-#info-daily-meals {
+#info-dailymeals {
     .text {
         font-size: 45px;
+    }
+}
+
+#info-greatjob.LEAVING,
+#info-dailymeals {
+    .sprite,
+    .circle {
+        transform: none;
+
+        img {
+            transform: none;
+        }
     }
 }
 
@@ -34,6 +66,15 @@
         right: -20px;
         bottom: 90px;
         width: 300px;
+        opacity: 0;
+        transition: opacity 2s;
+        transition-delay: 2s;
+    }
+
+    &.OPEN {
+        .flip {
+            opacity: 1;
+        }
     }
 }
 

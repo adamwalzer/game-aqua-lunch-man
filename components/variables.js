@@ -75,7 +75,7 @@ export const INFO_SCREEN = [
     {
         vo: 'somefoods',
         text: (
-            <div>
+            <div className="animated">
                 Some foods need<br />
                 more water than others<br />
                 to be produced.<br /><br />
@@ -89,18 +89,19 @@ export const INFO_SCREEN = [
     {
         vo: 'greatjob',
         text: (
-            <div>
+            <div className="animated">
                 <span className="soj-title">GREAT JOB!</span><br />
                 You have the power to<br />
                 help save water<br />
-                by making smart food choices!
+                by making<br />
+                smart food choices!
             </div>
         ),
     },
     {
         vo: 'dailymeals',
         text: (
-            <div>
+            <div className="animated">
                 Now let's see<br />
                 how much water<br />
                 is used for your<br />
@@ -111,7 +112,7 @@ export const INFO_SCREEN = [
     {
         vo: 'flip',
         text: (
-            <div>
+            <div className="animated">
                 As a reward for taking<br />
                 the time to learn<br />
                 about the water that<br />
@@ -124,7 +125,7 @@ export const INFO_SCREEN = [
 
 export const INFO_ANSWER = {
     [FOOD.WATERMELON]: (
-        <div>
+        <div className="animated">
             <div className="soj-title">WATERMELON!</div>
             An 8 ounce serving of pizza takes<br />
             321 gallons of water to produce,<br />
@@ -134,7 +135,7 @@ export const INFO_ANSWER = {
         </div>
     ),
     [FOOD.CHICKEN]: (
-        <div>
+        <div className="animated">
             <div className="soj-title">CHICKEN!</div>
             An 8 ounce serving of steak<br />
             takes 850 gallons of water to<br />
@@ -144,7 +145,7 @@ export const INFO_ANSWER = {
         </div>
     ),
     [FOOD.BROCCOLI]: (
-        <div>
+        <div className="animated">
             <div className="soj-title">BROCCOLI!</div>
             An 8 ounce serving of<br />
             a cheese sandwich takes<br />
@@ -155,16 +156,17 @@ export const INFO_ANSWER = {
         </div>
     ),
     [FOOD.BREAD]: (
-        <div>
+        <div className="animated">
             <div className="soj-title">WHEAT BREAD!</div>
             An 8 ounce serving of pasta<br />
-            takes 100 gallons of wate<br />
-            to produce, but the same amount of wheat brea<br />
+            takes 100 gallons of water<br />
+            to produce, but the<br />
+            same amount of wheat bread<br />
             only takes 87 gallons.
         </div>
     ),
     [FOOD.APPLE_J]: (
-        <div>
+        <div className="animated">
             <div className="soj-title">APPLE JUICE!</div>
             An 8 ounce serving of soda<br />
             takes 46 gallons of water<br />
@@ -174,7 +176,7 @@ export const INFO_ANSWER = {
         </div>
     ),
     [FOOD.EGGS]: (
-        <div>
+        <div className="animated">
             <div className="soj-title">EGGS!</div>
             An 8 ounce serving of an average<br />
             hamburger takes 660 gallon<br />
@@ -184,7 +186,7 @@ export const INFO_ANSWER = {
         </div>
     ),
     [FOOD.AVOCADO]: (
-        <div>
+        <div className="animated">
             <div className="soj-title">AVOCADO!</div>
             An 8 ounce serving of<br />
             lamb chops takes 677 gallons<br />
@@ -194,7 +196,7 @@ export const INFO_ANSWER = {
         </div>
     ),
     [FOOD.BANANA]: (
-        <div>
+        <div className="animated">
             <div className="soj-title">BANANA!</div>
             An 8 ounce serving of<br />
             a chocolate bar takes 317 gallons<br />
@@ -204,7 +206,7 @@ export const INFO_ANSWER = {
         </div>
     ),
     [FOOD.TOFU]: (
-        <div>
+        <div className="animated">
             <div className="soj-title">TOFU!</div>
             An 8 ounce serving of<br />
             pork takes 330 gallon<br />

@@ -13,16 +13,18 @@ export default function (id) {
             >
                 <skoash.Audio
                     type="voiceOver"
+                    delay={1000}
                     src={`${CMWN.MEDIA.VO}${id}.mp3`}
                 />
-                <skoash.Image
-                    className="circle"
-                    src={`${CMWN.MEDIA.IMAGE}circleframe.png`}
-                />
-                <skoash.Component className="text">
-                    {INFO_ANSWER[id]}
+                <skoash.Component className="circle">
+                    <skoash.Image src={`${CMWN.MEDIA.IMAGE}circleframe.png`}/>
                 </skoash.Component>
-                <div className={`correct-food ${id}`} />
+                <div className="text">
+                    {INFO_ANSWER[id]}
+                </div>
+                <div className="food-container animated">
+                    <div className={`correct-food ${id}`} />
+                </div>
             </skoash.Screen>
         );
     };

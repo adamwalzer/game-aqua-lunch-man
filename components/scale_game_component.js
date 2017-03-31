@@ -28,7 +28,7 @@ export default function (foodleft, foodright, correct = LEFT) {
                 ref={ref}
                 key={key}
                 id={`scale-${foodleft}-${foodright}`}
-                backgroundAudio="BKG1"
+                backgroundAudio="bkg1"
             >
                 <skoash.Audio
                     type="voiceOver"

@@ -29,19 +29,16 @@
 @mixin circle-text() {
     .circle {
         margin-top: 15px;
-        width: 510px;
+        width: 100%;
+
+        img {
+            width: 510px;
+        }
     }
 
     .text {
-        @include center;
-        width: 420px;
-        height: 360px;
+        @include center('true', 'false');
+        width: 100%;
         font-size: 33px;
-
-        div {
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-        }
     }
 }

@@ -3,28 +3,62 @@
 .screen[id*="answer"] {
     @include circle-text;
 
-    .soj-title {
-        font-size: 71px;
+    .circle {
+        transition: transform 1s;
+        transform: translateX(-100%);
+
+        img {
+            transition: transform 1s;
+            transform: rotate(-360deg);
+        }
     }
 
     .text {
         font-size: 27px;
+        transition: opacity 1.5s;
+        transition-delay: 0.5s;
+        opacity: 0;
     }
 
-    .correct-food {
-        @include sprite-transform(.5, bottom, right);
-        right: 200px;
-        bottom: 120px;
+    .soj-title {
+        font-size: 71px;
+        transition: transform 1.5s;
+        transition-delay: 1s;
+        transform: translateY(-400%);
+    }
+
+    .food-container {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        height: 70%;
+        width: 35%;
+
+        .correct-food {
+            @include sprite-transform(.5, bottom, right);
+        }
     }
 
     &.OPEN {
         .text {
-            animation-name: slideInLeft;
-            animation-delay: 2s;
+            opacity: 1;
+        }
+
+        .soj-title {
+            transform: none;
         }
 
         .circle {
-            animation-name: rotateIn;
+            transform: none;
+
+            div {
+                animation-name: rotateIn;
+            }
+        }
+
+        .food-container {
+            animation-name: slideInRight;
+            animation-delay: 1.5s;
         }
     }
 }
